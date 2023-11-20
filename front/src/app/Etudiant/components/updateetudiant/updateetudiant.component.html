@@ -1,0 +1,33 @@
+
+<form #studentForm="ngForm" (ngSubmit)="updateStudent()">
+    <div class="container">
+        <div id="formtitle">Update Student</div>
+
+        <div class="formfield" id="firstnamefield">
+            <input type="text" name="prenomEtudiant" id="prenomEtudiant" [(ngModel)]="student.prenomEtudiant" required>
+            <label for="prenomEtudiant">First Name</label>
+        </div>
+
+        <div class="formfield" id="lastnamefield">
+            <input type="text" name="nomEtudiant" id="nomEtudiant" [(ngModel)]="student.nomEtudiant" required>
+            <label for="nomEtudiant">Last Name</label>
+        </div>
+
+        <div class="formfield" id="schoolfield">
+            <input type="text" name="ecole" id="ecole" [(ngModel)]="student.ecole" required>
+            <label for="ecole">School</label>
+        </div>
+
+        <div class="formfield" id="cinfield">
+            <input type="number" name="cin" id="cin" [(ngModel)]="student.cin" required>
+            <label for="cin">CIN</label>
+        </div>
+
+        <div class="formfield" id="birthdatefield">
+            <input type="date" name="dateNaissance" id="dateNaissance" [(ngModel)]="student.dateNaissance" required>
+            <label for="dateNaissance">Date of Birth</label>
+        </div>
+
+        <button type="submit">Update</button>
+    </div>
+</form>

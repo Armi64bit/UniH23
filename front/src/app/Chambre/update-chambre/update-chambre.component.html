@@ -1,0 +1,28 @@
+
+<form #studentForm="ngForm" (ngSubmit)="updateCh()">
+  <div class="container">
+      <div id="formtitle">Update Student</div>
+
+      <div class="formfield" id="firstnamefield">
+          <input type="text" name="prenomEtudiant" id="prenomEtudiant" [(ngModel)]="chambre.numeroChambre" required>
+          <label for="prenomEtudiant">First Name</label>
+      </div>
+
+      <div class="formfield" id="lastnamefield">
+        <label for="typeC">Type Chambre</label>
+        <select name="typeC" id="typeC" [(ngModel)]="chambre.typeC" required>
+          <option value="SIMPLE">Simple</option>
+          <option value="DOUBLE">Double</option>
+          <option value="TRIPLE">Triple</option>
+        </select>
+      </div>
+      <div class="formfield" id="schoolfield">
+        <select name="bloc" id="bloc" [(ngModel)]="chambre.bloc.idBloc" required>
+          <option *ngFor="let bloc of blocs" [ngValue]="bloc.idBloc">{{ bloc.nomBloc }}</option>
+        </select>
+      </div>
+
+
+      <button type="submit">Update</button>
+  </div>
+</form>

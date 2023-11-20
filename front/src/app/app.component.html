@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <img src="../assets/images/unihaven.png" alt="logo" style="width: 200px; vertical-align: middle; margin:-30px;"> <!-- Adjust width as needed -->
+        </div>
+
+        <div class="logo">
+            <img src="../assets/images/users/user1.jpg" alt="admin" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;"> <!-- Adjust width and height as needed -->
+            <div class="admin-name">Admin Name</div> <!-- Replace with the actual admin's name -->
+        </div>
+               <!-- Let's create some playful navigation links -->
+     <!-- Etudiants Dropdown -->
+     <a routerLink="/students/all"(click)="toggleEtudiants()"><i class="fa fa-user"></i> Etudiants</a>
+    <div *ngIf="showEtudiantsOptions">
+        <ul>
+            <a routerLink="/students/all"><i class="fa fa-users"></i> All Students</a>
+            <a routerLink="/students/add"><i class="fa fa-user-plus"></i> Add Student</a>
+
+        </ul>
+    </div>
+
+    <!-- Other Links with Icons -->
+    <a routerLink="/bloc"><i class="fa fa-building"></i> Bloc</a>
+    <a routerLink="/university"><i class="fa fa-university"></i> University</a>
+    <a routerLink="/reservations"><i class="fa fa-calendar-alt"></i> Reservations</a>
+    <a routerLink="/foyer"><i class="fa fa-home"></i> Foyer</a>
+    <!-- <a routerLink="/chambres"><i class="fa fa-bed"></i> Chambres</a> -->
+    <a routerLink="/chambre/all"(click)="togglech()"><i class="fa fa-user"></i> Chambre</a>
+    <div *ngIf="showchOptions">
+        <ul>
+            <a routerLink="/chambre/all"><i class="fa fa-users"></i> All Chambre</a>
+            <a routerLink="/chambre/add"><i class="fa fa-user-plus"></i> Add Chambre</a>
+
+        </ul>
+    </div>
+    </div>
+    <div class="content card-with-border-radius">
+        <!-- Router Outlet -->
+        <!-- <app-add-chambre></app-add-chambre> -->
+        <!-- <app-all-chambre></app-all-chambre> -->
+        <router-outlet></router-outlet>
+    </div>
+</body>
+</html>

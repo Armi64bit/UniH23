@@ -1,0 +1,27 @@
+<form #studentForm="ngForm" (ngSubmit)="addStudent()">
+  <div class="container">
+    <div id="formtitle">Add Student</div>
+
+    <div class="formfield" id="blocfield">
+      <label for="bloc">Bloc</label>
+      <select name="bloc" id="bloc" [(ngModel)]="chambre.bloc.idBloc" required>
+        <option *ngFor="let bloc of blocs" [ngValue]="bloc.idBloc">{{ bloc.nomBloc }}</option>
+      </select>
+    </div>
+    <div class="formfield" id="firstnamefield">
+      <input type="text" name="prenomEtudiant" id="prenomEtudiant" [(ngModel)]="chambre.numeroChambre" required>
+      <label for="prenomEtudiant">num chambre</label>
+    </div>
+
+    <div class="formfield" id="lastnamefield">
+      <label for="typeC">Type Chambre</label>
+      <select name="typeC" id="typeC" [(ngModel)]="chambre.typeC" required>
+        <option value="SIMPLE">Simple</option>
+        <option value="DOUBLE">Double</option>
+        <option value="TRIPLE">Triple</option>
+      </select>
+    </div>
+
+    <button type="submit">Save</button>
+  </div>
+</form>

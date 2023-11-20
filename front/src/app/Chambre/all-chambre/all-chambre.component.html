@@ -1,0 +1,35 @@
+
+<div class="search-bar">
+  <!-- <input type="text" placeholder="Search" [(ngModel)]="searchQuery" (input)="onSearchChange()"> -->
+</div>
+ <h1>Students</h1>
+
+  <div>
+    <table class="fixed_headers">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Num Chambre</th>
+          <th>Type</th>
+          <th>Bloc id</th> <!-- Add this for 'ecole' -->
+          <th>Bloc name</th> <!-- Add this for 'cin' -->
+          <th>Delete</th> <!-- Add this for 'cin' -->
+          <th>Update</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let e of chambres">
+          <tr>
+            <td>{{ e.idChambre }}</td>
+            <td>{{ e.numeroChambre }}</td>
+            <td>{{ e.typeC }}</td>
+            <td>{{ e.bloc?.idBloc }}</td> <!-- Display 'ecole' field -->
+            <td>{{ e.bloc?.nomBloc }}</td> <!-- Display 'cin' field -->
+            <td><button (click)="deleteStudent(e)">Delete</button></td>
+            <td><button class="update-button" (click)="navigateToUpdate(e)">Update</button></td>
+
+        </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>

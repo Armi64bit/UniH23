@@ -1,0 +1,75 @@
+
+.container{
+    max-width: 700px;
+  }
+  .formfield{
+    position: relative;
+    box-sizing: border-box;
+    float: left;
+    margin: auto;
+    padding: 0px;
+    border: 0px;
+    font-size: 1em;
+  }
+  .formfield *{
+    box-sizing: border-box;
+  }
+  #firstnamefield, #lastnamefield{
+    width: 50%;
+    min-width: 250px;
+  }
+  #addressfield{
+    width: 100%;
+  }
+  #zipcodefield{
+    width: 25%;
+  }
+  #cityfield{
+    width: 75%;
+  }
+  .formfield>input, .formfield>label{
+    padding: 0.8em;
+    margin: 0.5em;
+    width: 100%;
+  }
+  .formfield>input{
+    border: 1px solid #00bafa;
+    border-radius: 1.5em;
+    outline: none;
+  }
+  .formfield>label{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    color: #ccc;
+  }
+  input:focus + label, input:valid + label{
+    color: #00bafa;
+    font-size: 0.8em;
+    width: auto;
+    height: 1.3em;
+    padding: 0px 0.5em 0px 0.5em;
+    margin: 0px;
+    /*outline: 1px solid red; /*for debugigng purposes only*/
+    background: white;
+    transition: 0.2s ease-in-out;
+    top: 0em;
+    left: 2em;
+  }
+  
+  
+button {
+    width: 250px;
+    height: 45px;
+    border: 1px solid #FFF;
+    background: #164863;
+    color: #FFF;
+    border-radius: 25px;
+    transition: all 300ms ease-in-out;
+  }
+  
+  button:hover {
+    background-color: HSLA(0, 0%, 100%, .2);
+  }
+  
