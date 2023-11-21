@@ -24,11 +24,16 @@ export class ChambreService {
     return this.http.post<Chambre>(`${this.apiUrl}/add`, chambre);
   }
 
-  updateChambre( chambre: Chambre): Observable<Chambre> {
-    return this.http.put<Chambre>(`${this.apiUrl}/modify/`, chambre);
+  updateChambre( chambre: Chambre): Observable<any> {
+    const url = `http://localhost:8081/springProjectTwin2/chambre/modify`;
+    return this.http.put(url, chambre);
   }
 
   deleteChambre(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/remove/${id}`);
+  }
+  searchChambre(nom: string): Observable<Chambre[]> {
+    const url = `${this.apiUrl}/search/${nom}`;
+    return this.http.get<Chambre[]>(url);
   }
 }

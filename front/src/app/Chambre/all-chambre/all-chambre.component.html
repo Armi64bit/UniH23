@@ -1,8 +1,14 @@
 
-<div class="search-bar">
-  <!-- <input type="text" placeholder="Search" [(ngModel)]="searchQuery" (input)="onSearchChange()"> -->
+<div class="search-bar" [@searchAnimation]="searchQuery">
+  <input type="text" placeholder="Search" [(ngModel)]="searchQuery" (input)="onSearchChange()">
 </div>
  <h1>Students</h1>
+ <div *ngIf="noResults; else studentTable">
+  <!-- Display your 404 animation or message here -->
+  404
+  <p>No results found.</p>
+</div>
+ <ng-template #studentTable>
 
   <div>
     <table class="fixed_headers">
@@ -33,3 +39,5 @@
       </tbody>
     </table>
   </div>
+</ng-template>
+

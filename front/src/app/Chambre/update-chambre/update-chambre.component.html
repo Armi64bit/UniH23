@@ -4,12 +4,13 @@
       <div id="formtitle">Update Student</div>
 
       <div class="formfield" id="firstnamefield">
+        <label for="prenomEtudiant">First Name</label>
+
           <input type="text" name="prenomEtudiant" id="prenomEtudiant" [(ngModel)]="chambre.numeroChambre" required>
-          <label for="prenomEtudiant">First Name</label>
       </div>
 
       <div class="formfield" id="lastnamefield">
-        <label for="typeC">Type Chambre</label>
+        <label for="prenomEtudiant">Type Chambre</label>
         <select name="typeC" id="typeC" [(ngModel)]="chambre.typeC" required>
           <option value="SIMPLE">Simple</option>
           <option value="DOUBLE">Double</option>
@@ -17,12 +18,14 @@
         </select>
       </div>
       <div class="formfield" id="schoolfield">
+        <label for="prenomEtudiant">Bloc</label>
+
         <select name="bloc" id="bloc" [(ngModel)]="chambre.bloc.idBloc" required>
           <option *ngFor="let bloc of blocs" [ngValue]="bloc.idBloc">{{ bloc.nomBloc }}</option>
         </select>
       </div>
 
 
-      <button type="submit">Update</button>
+      <button class="update-button" type="submit">Update</button>
   </div>
 </form>

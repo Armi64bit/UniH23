@@ -60,7 +60,7 @@ export class UpdateChambreComponent {
     this.chs.updateChambre(this.chambre).subscribe(
       response => {
         // Handle the response
-        this.router.navigate(['/students/all']);
+        this.router.navigate(['/chambre/all']);
       },
       error => {
         // Handle errors

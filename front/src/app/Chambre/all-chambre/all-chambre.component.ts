@@ -2,15 +2,25 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Chambre } from 'src/app/models/chambre.model';
 import { ChambreService } from 'src/app/services/chambre.service';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-all-chambre',
   templateUrl: './all-chambre.component.html',
-  styleUrls: ['./all-chambre.component.css']
+  styleUrls: ['./all-chambre.component.css'],
+  animations: [
+    trigger('searchAnimation', [
+      state('void', style({ opacity: 0, transform: 'translateY(-20px)' })),
+      state('*', style({ opacity: 1, transform: 'translateY(0)' })),
+      transition(':enter, :leave', animate('300ms ease-in-out')),
+    ]),
+  ],
 })
 export class AllChambreComponent {
   chambres: Chambre[] = [];
   searchQuery: string = '';
+  noResults: boolean = false;
+
   constructor(private chs: ChambreService, private router: Router) {}
 
   ngOnInit(): void {
@@ -46,4 +56,24 @@ export class AllChambreComponent {
     }
   }
 
+  onSearchChange(): void {
+    if (this.searchQuery.trim() !== '') {
+      this.chs.searchChambre(this.searchQuery).subscribe(
+        data => {
+          this.chambres = data;
+          this.noResults = this.chambres.length === 0;
+
+        },
+        error => {
+          console.error('Error fetching search results', error);
+          // Optionally, you can add more detailed error handling here
+        }
+      );
+    } else {
+      // If the search query is empty, reload all students
+      this.loadch();
+      this.noResults = false; // Reset the noResults flag when the search query is empty
+
+    }
+  }
 }

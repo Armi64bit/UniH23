@@ -26,7 +26,8 @@ import { UpdateChambreComponent } from './Chambre/update-chambre/update-chambre.
     UpdateChambreComponent,
     AddChambreComponent,
     AllChambreComponent,
-    UpdateChambreComponent
+    UpdateChambreComponent,
+
 
 
 
