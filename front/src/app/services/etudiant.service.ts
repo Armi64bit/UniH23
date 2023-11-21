@@ -36,4 +36,10 @@ searchEtudiants(cin: string): Observable<Etudiant[]> {
   return this.http.get<Etudiant[]>(`${this.apiUrl}/search`, { params: { cin } });
 }
 
+
+
+getStudentsStatistics(school: string): Observable<any> {
+  return this.http.get<any>(`${this.apiUrl}/statistics/ecole?school=${school}`);
+}
+
 }  

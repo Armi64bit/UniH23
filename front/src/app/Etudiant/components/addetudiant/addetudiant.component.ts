@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./addetudiant.component.css']
 })
 export class AddetudiantComponent {
+  
   student: Etudiant = {
       idEtudiant: 0,
       nomEtudiant: '',
@@ -16,7 +17,8 @@ export class AddetudiantComponent {
       ecole: '',
       cin: 0,
       dateNaissance: new Date(),
-      // ... other fields ...
+      reservations: [] // Assuming you have an array of reservations
+
   };
 
   constructor(private etudiantService: EtudiantService, private router: Router) {}

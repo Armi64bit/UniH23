@@ -1,11 +1,9 @@
 package tn.esprit.springprojecttwin2.controller;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.TableGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.springprojecttwin2.entites.Bloc;
-import tn.esprit.springprojecttwin2.entites.Chambre;
 import tn.esprit.springprojecttwin2.services.IBlocService;
 
 import java.util.List;
@@ -42,10 +40,6 @@ public class BlocController {
         blocService.removeBloc(bcId);
     }
 
-    @GetMapping("/{blocId}/chambres")
-    @JsonIgnore
-    public List<Chambre> getChambresByBlocId(@PathVariable Long blocId) {
-        return blocService.getChambresByBlocId(blocId);
-    }
+
 
 }

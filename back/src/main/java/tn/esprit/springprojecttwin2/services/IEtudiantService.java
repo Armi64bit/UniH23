@@ -11,5 +11,7 @@ public interface IEtudiantService {
     public Etudiant addEtudiant(Etudiant b);
     public void removeEtudiant(long id);
     public Etudiant UpdateEtudiant(Etudiant b);
+    public List<Etudiant> searchEtudiants(long cin) ;
+    public List<Object[]> countStudentsByEcole(String school);
 
-}
+    }

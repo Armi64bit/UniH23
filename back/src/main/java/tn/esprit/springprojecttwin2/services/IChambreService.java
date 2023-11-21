@@ -11,5 +11,4 @@ public interface IChambreService {
     public Chambre addChambre(Chambre b);
     public void removeChambre(long id);
     public Chambre UpdateChambre(Chambre b);
-    public Bloc getBlocByChambreId(long idChambre);
 }

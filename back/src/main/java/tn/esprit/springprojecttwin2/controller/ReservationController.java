@@ -1,7 +1,6 @@
 package tn.esprit.springprojecttwin2.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.springprojecttwin2.entites.Reservation;
 import tn.esprit.springprojecttwin2.services.IReservationService;
@@ -38,15 +37,5 @@ public class ReservationController {
     public Reservation modifyReservation(@RequestBody Reservation r){
         Reservation reservation = reservationService.UpdateFoyer(r);
         return reservation;
-    }
-    @GetMapping("/etudiant/{etudiantId}")
-    public ResponseEntity<List<Reservation>> getReservationsByEtudiantId(@PathVariable long etudiantId) {
-        List<Reservation> reservations = reservationService.getReservationsByEtudiantId(etudiantId);
-
-        if (!reservations.isEmpty()) {
-            return ResponseEntity.ok(reservations);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
     }
 }

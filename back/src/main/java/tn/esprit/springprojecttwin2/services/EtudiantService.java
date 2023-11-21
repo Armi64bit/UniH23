@@ -36,4 +36,14 @@ public class EtudiantService implements IEtudiantService{
     public Etudiant UpdateEtudiant(Etudiant b) {
         return etudiantRep.save(b);
     }
+
+    public List<Etudiant> searchEtudiants(long cin) {
+        return etudiantRep.findByCin(cin); // Ensure this method is defined in your repository
+    }
+
+    @Override
+    public List<Object[]> countStudentsByEcole(String school) {
+        return etudiantRep.countStudentsByEcole(school);
+    }
+
 }

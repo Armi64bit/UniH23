@@ -1,7 +1,6 @@
 <form #studentForm="ngForm" (ngSubmit)="addStudent()">
     <div class="container">
-        <div id="formtitle">Add Student</div>
-
+        <h1 id="formtitle">Add Student</h1>
         <div class="formfield" id="firstnamefield">
             <input type="text" name="prenomEtudiant" id="prenomEtudiant" [(ngModel)]="student.prenomEtudiant" required>
             <label for="prenomEtudiant">First Name</label>
@@ -26,6 +25,13 @@
             <input type="date" name="dateNaissance" id="dateNaissance" [(ngModel)]="student.dateNaissance" required>
             <label for="dateNaissance">Date of Birth</label>
         </div>
+        <div class="formfield" id="reservationfield">
+            <select name="idReservation" id="idReservation" [(ngModel)]="student.reservations[0].idReservation" required class="formfield">
+              <option *ngFor="let reservation of student.reservations" [ngValue]="reservation.idReservation" class="selectfield">{{ reservation.idReservation }}</option>
+            </select>
+            <label for="idReservation">Reservation ID</label>
+          </div>
+          
 
         <button type="submit">Save</button>
     </div>

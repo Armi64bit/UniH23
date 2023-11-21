@@ -9,10 +9,7 @@ import { AlletudiantComponent } from './Etudiant/components/alletudiant/alletudi
 import { UpdateetudiantComponent } from './Etudiant/components/updateetudiant/updateetudiant.component';
 import { DeleteetudiantComponent } from './Etudiant/components/deleteetudiant/deleteetudiant.component';
 import { AddetudiantComponent } from './Etudiant/components/addetudiant/addetudiant.component';
-import { AddChambreComponent } from './Chambre/add-chambre/add-chambre.component';
-import { AllChambreComponent } from './Chambre/all-chambre/all-chambre.component';
-import { DeleteChambreComponent } from './Chambre/delete-chambre/delete-chambre.component';
-import { UpdateChambreComponent } from './Chambre/update-chambre/update-chambre.component';
+import { StatisticetudiantComponent } from './Etudiant/components/statisticetudiant/statisticetudiant.component';
 
 @NgModule({
   declarations: [
@@ -22,14 +19,10 @@ import { UpdateChambreComponent } from './Chambre/update-chambre/update-chambre.
     UpdateetudiantComponent,
     DeleteetudiantComponent,
     AddetudiantComponent,
-    DeleteChambreComponent,
-    UpdateChambreComponent,
-    AddChambreComponent,
-    AllChambreComponent,
-    UpdateChambreComponent
+    StatisticetudiantComponent
+    
 
-
-
+    
   ],
   imports: [
     BrowserModule,
