@@ -14,6 +14,7 @@ import { AllChambreComponent } from './Chambre/all-chambre/all-chambre.component
 import { DeleteChambreComponent } from './Chambre/delete-chambre/delete-chambre.component';
 import { UpdateChambreComponent } from './Chambre/update-chambre/update-chambre.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -38,9 +39,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule, // Ensure FormsModule is here
+    BrowserAnimationsModule,
+    ModalModule.forRoot()// Ensure FormsModule is here
   ],
-  providers: [],
+  providers: [BsModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -163,3 +163,23 @@ button:hover {
     -moz-transform: rotate(45deg);
     transform: rotate(45deg);
   }
+/* Global styles (styles.css or styles.scss) */
+
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #121111;
+}
+
+.table-bordered {
+  border: 1px solid #0c0c0c;
+}
+
+.table-dark {
+  color: #101010;
+  background-color: #212529;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(23, 113, 209, 0.05);
+}
