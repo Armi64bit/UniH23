@@ -13,7 +13,6 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            
             "outputPath": "dist/frontbloc",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -26,6 +25,8 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -65,7 +66,7 @@
             },
             "development": {
               "browserTarget": "Frontbloc:build:development",
-              "proxyConfig": "src/proxy.conf.json" 
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

@@ -13,6 +13,7 @@ import { AddChambreComponent } from './Chambre/add-chambre/add-chambre.component
 import { AllChambreComponent } from './Chambre/all-chambre/all-chambre.component';
 import { DeleteChambreComponent } from './Chambre/delete-chambre/delete-chambre.component';
 import { UpdateChambreComponent } from './Chambre/update-chambre/update-chambre.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { UpdateChambreComponent } from './Chambre/update-chambre/update-chambre.
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule, // Ensure FormsModule is here
+    FormsModule,
+    BrowserAnimationsModule, // Ensure FormsModule is here
   ],
   providers: [],
   bootstrap: [AppComponent]
