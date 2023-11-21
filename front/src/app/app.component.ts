@@ -8,12 +8,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Unihaven';
   showEtudiantsOptions = false;
-  showchOptions: boolean = false;
 
     toggleEtudiants(): void {
         this.showEtudiantsOptions = !this.showEtudiantsOptions;
     }
-    togglech(): void {
-      this.showchOptions = !this.showchOptions;
-  }
 }

@@ -38,8 +38,4 @@ public class ReservationService implements IReservationService{
     public Reservation UpdateFoyer(Reservation b) {
         return reservationRepo.save(b);
     }
-    @Override
-    public List<Reservation> getReservationsByEtudiantId(long idEtudiant) {
-        return reservationRepo.findReservationsByEtudiantId(idEtudiant);
-    }
 }

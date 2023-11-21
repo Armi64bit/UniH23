@@ -1,6 +1,5 @@
 package tn.esprit.springprojecttwin2.entites;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 import org.w3c.dom.stylesheets.LinkStyle;
@@ -24,8 +23,6 @@ public class Chambre implements Serializable {
     @OneToMany /* chambre 1-->* reservation */
     private List<Reservation> reservations;
     @ManyToOne /* bloc 1-->* chambre */
-    @JsonBackReference
-
     private Bloc bloc;
 
 }

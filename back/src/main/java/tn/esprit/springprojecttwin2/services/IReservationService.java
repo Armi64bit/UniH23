@@ -11,5 +11,4 @@ public interface IReservationService {
     public Reservation addReservation(Reservation b);
     public void removeReservation(long id);
     public Reservation UpdateFoyer(Reservation b);
-    public List<Reservation> getReservationsByEtudiantId(long idEtudiant);
 }

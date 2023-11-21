@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.springprojecttwin2.entites.Bloc;
-import tn.esprit.springprojecttwin2.entites.Chambre;
 import tn.esprit.springprojecttwin2.repository.BlocRepository;
 
 import java.util.List;
@@ -34,9 +33,5 @@ public class BlocService implements IBlocService {
     @Override
     public Bloc UpdateBloc(Bloc b) {
         return blocRep.save(b);
-    }
-    @Override
-    public List<Chambre> getChambresByBlocId(Long blocId) {
-        return blocRep.findChambresByBlocId(blocId);
     }
 }

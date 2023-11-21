@@ -1,6 +1,7 @@
 package tn.esprit.springprojecttwin2.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.springprojecttwin2.entites.Etudiant;
 import tn.esprit.springprojecttwin2.services.IEtudiantService;
@@ -41,5 +42,15 @@ public class EtudiantController {
     public Etudiant modifyEtudiant(@RequestBody Etudiant e){
         Etudiant etudiant = etudiantService.UpdateEtudiant(e);
         return etudiant;
+    }
+    @GetMapping("/search")
+    public ResponseEntity<List<Etudiant>> searchEtudiants(@RequestParam long cin) {
+        List<Etudiant> etudiants = etudiantService.searchEtudiants(cin);
+        return ResponseEntity.ok(etudiants);
+    }
+
+    @GetMapping("/statistics/ecole")
+    public List<Object[]> getStudentsByEcole(@RequestParam String school) {
+        return etudiantService.countStudentsByEcole(school);
     }
 }
