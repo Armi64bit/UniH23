@@ -76,4 +76,20 @@ export class AllChambreComponent {
 
     }
   }
+  OpenModel(){
+    const modeldiv=document.getElementById('myModal');
+    if(modeldiv!=null){
+      modeldiv.style.display ='block'
+
+    }
+
+  }
+  CloseModel(){
+    const modeldiv=document.getElementById('myModal');
+    if(modeldiv!=null){
+      modeldiv.style.display ='none'
+
+    }
+
+  }
 }

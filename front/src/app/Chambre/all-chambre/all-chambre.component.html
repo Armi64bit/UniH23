@@ -1,25 +1,47 @@
+<!-- Add the following link to include Bootstrap CSS (dark mode) -->
+<!-- <link href="path/to/bootstrap-dark.min.css" rel="stylesheet"> -->
 
-<div class="search-bar" [@searchAnimation]="searchQuery">
-  <input type="text" placeholder="Search" [(ngModel)]="searchQuery" (input)="onSearchChange()">
-</div>
- <h1>Students</h1>
- <div *ngIf="noResults; else studentTable">
+<!-- The rest of your existing HTML code -->
+<div class="bg-dark" >
+  <div class="container">
+    <div class="search-bar bg-dark dark-mode" [@searchAnimation]="searchQuery">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text bg-dark text-white">
+                  <i class="fas fa-search"></i>
+                </span>
+              </div>
+              <input class="form-control bg-dark dark-mode text-white" type="text" placeholder="Search" [(ngModel)]="searchQuery" (input)="onSearchChange()">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<h1 class="text-white">Chambre</h1>
+
+<div *ngIf="noResults; else studentTable" class="text-white">
   <!-- Display your 404 animation or message here -->
   404
   <p>No results found.</p>
 </div>
- <ng-template #studentTable>
 
+<ng-template #studentTable>
   <div>
-    <table class="fixed_headers">
+    <table class="table table-dark">
+      <!-- Add 'table-dark' class for dark mode -->
       <thead>
         <tr>
           <th>ID</th>
           <th>Num Chambre</th>
           <th>Type</th>
-          <th>Bloc id</th> <!-- Add this for 'ecole' -->
-          <th>Bloc name</th> <!-- Add this for 'cin' -->
-          <th>Delete</th> <!-- Add this for 'cin' -->
+          <th>Bloc id</th>
+          <th>Bloc name</th>
+          <th>Delete</th>
           <th>Update</th>
         </tr>
       </thead>
@@ -29,15 +51,39 @@
             <td>{{ e.idChambre }}</td>
             <td>{{ e.numeroChambre }}</td>
             <td>{{ e.typeC }}</td>
-            <td>{{ e.bloc?.idBloc }}</td> <!-- Display 'ecole' field -->
-            <td>{{ e.bloc?.nomBloc }}</td> <!-- Display 'cin' field -->
-            <td><button (click)="deleteStudent(e)">Delete</button></td>
-            <td><button class="update-button" (click)="navigateToUpdate(e)">Update</button></td>
+            <td>{{ e.bloc?.idBloc }}</td>
+            <td><div class="btn btn-success" (click)="OpenModel()">{{ e.bloc?.nomBloc }}</div></td>
+            <td><button class="btn btn-danger" (click)="deleteStudent(e)">Delete</button></td>
+            <td><button class="btn btn-info update-button" (click)="navigateToUpdate(e)">Update</button></td>
+          </tr>
 
-        </tr>
+<div class="modal dark-mode" id="myModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h4 class="modal-title">Bloc Information</h4>
+        <button type="button" class="btn-close text-white" (click)="CloseModel()" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Display information from the Bloc interface -->
+        <p class="mb-2"><strong>ID:</strong> {{ e.bloc?.idBloc }}</p>
+        <p class="mb-2"><strong>Name:</strong> {{ e.bloc?.nomBloc }}</p>
+        <p class="mb-2"><strong>Capacity:</strong> {{ e.bloc?.capacityBloc }}</p>
+        <!-- Uncomment the following lines if you have imported and want to display Foyer and Chambre information -->
+        <!--
+        <p>Foyer: {{ bloc.foyer.someProperty }}</p>
+        <p>Chambres: {{ bloc.chambres.map(chambre => chambre.someProperty).join(', ') }}</p>
+        -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="CloseModel()" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
         </ng-container>
       </tbody>
     </table>
   </div>
 </ng-template>
-
+</div>

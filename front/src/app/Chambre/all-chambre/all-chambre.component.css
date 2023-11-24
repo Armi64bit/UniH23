@@ -1,4 +1,4 @@
-.fixed_headers {
+/*.fixed_headers {
   width: 750px;
   table-layout: fixed;
   border-collapse: collapse;
@@ -56,8 +56,8 @@
 
 .fixed_headers th,
 .fixed_headers td {
-  width: 16.67%; /* Equal width for each column */
-  text-align: left; /* Adjust text alignment if needed */
+  width: 16.67%; /* Equal width for each column
+  text-align: left;
 }
 button {
   width: 100%;
@@ -73,7 +73,7 @@ button:hover {
   background-color: HSLA(0, 0%, 100%, .2);
 }
 .update-button {
-  background-color: rgb(12, 79, 194); /* Orange background */
+  background-color: rgb(12, 79, 194); /* Orange background
 }
 
 .update-button:hover {
@@ -163,7 +163,7 @@ button:hover {
     -moz-transform: rotate(45deg);
     transform: rotate(45deg);
   }
-/* Global styles (styles.css or styles.scss) */
+/* Global styles (styles.css or styles.scss)
 
 .table {
   width: 100%;
@@ -180,6 +180,6 @@ button:hover {
   background-color: #212529;
 }
 
-.table-striped tbody tr:nth-of-type(odd) {
+ .table-striped tbody tr:nth-of-type(odd) {
   background-color: rgba(23, 113, 209, 0.05);
-}
+} */
