@@ -1,17 +1,17 @@
 
 <form #studentForm="ngForm" (ngSubmit)="updateCh()">
-  <div class="container">
-      <div id="formtitle">Update Student</div>
+  <div class=" text-white dark-mode bg-dark container">
+      <div class="dark-mode bg-dark text-white" id="formtitle">Update Chambre</div>
 
       <div class="formfield" id="firstnamefield">
-        <label for="prenomEtudiant">First Name</label>
+        <label for="prenomEtudiant">num chambre</label>
 
-          <input type="text" name="prenomEtudiant" id="prenomEtudiant" [(ngModel)]="chambre.numeroChambre" required>
+          <input class="text-white dark-mode bg-dark" type="text" name="prenomEtudiant" id="prenomEtudiant" [(ngModel)]="chambre.numeroChambre" required>
       </div>
 
       <div class="formfield" id="lastnamefield">
         <label for="prenomEtudiant">Type Chambre</label>
-        <select name="typeC" id="typeC" [(ngModel)]="chambre.typeC" required>
+        <select class="text-white  dark-mode bg-dark" name="typeC" id="typeC" [(ngModel)]="chambre.typeC" required>
           <option value="SIMPLE">Simple</option>
           <option value="DOUBLE">Double</option>
           <option value="TRIPLE">Triple</option>
@@ -20,7 +20,7 @@
       <div class="formfield" id="schoolfield">
         <label for="prenomEtudiant">Bloc</label>
 
-        <select name="bloc" id="bloc" [(ngModel)]="chambre.bloc.idBloc" required>
+        <select class="text-white dark-mode bg-dark" name="bloc" id="bloc" [(ngModel)]="chambre.bloc.idBloc" required>
           <option *ngFor="let bloc of blocs" [ngValue]="bloc.idBloc">{{ bloc.nomBloc }}</option>
         </select>
       </div>

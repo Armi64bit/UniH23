@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { Chambre } from 'src/app/models/chambre.model';
 import { ChambreService } from 'src/app/services/chambre.service';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-chambre',
@@ -91,5 +91,4 @@ export class AllChambreComponent {
 
     }
 
-  }
-}
+  }}
