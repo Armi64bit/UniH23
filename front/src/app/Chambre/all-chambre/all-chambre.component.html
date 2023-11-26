@@ -23,17 +23,20 @@
   </div>
 
   <h1 class="text-white fadeIn">Chambre</h1>
+  <div class="bg-dark">
+    <!-- ... Other HTML code ... -->
 
-  <div *ngIf="noResults; else studentTable" class=" text-white fade-in-out">
-    <!-- Display your 404 animation or message here -->
-    <img src="" alt="">
-    <h1 class="row col-8 font-weight-bolder" >404</h1>
-    <h1 class="row col-8 font-weight-bolder">No results found.</h1>
-  </div>
+    <div *ngIf="loading" class="text-center text-white fade-in-out my-4">
+      <!-- Display Bootstrap spinner while loading -->
+      <p class="h1L mb-4">LOADING...</p>
+      <div id="loading"></div>
+    </div>
 
-  <ng-template #studentTable>
-    <div class="fadeIn">
-      <table class="text-capitalize  fade show delay-2s table table-dark table-hover ">
+    </div>
+
+    <div *ngIf="!loading; else noResultsSection" class="fadeIn">
+      <!-- Display the table when not loading -->
+      <table class="text-capitalize fade show delay-2s table table-dark table-hover">
         <!-- Add 'table-dark' class for dark mode -->
         <thead>
           <tr>
@@ -59,7 +62,7 @@
             </tr>
 
             <!-- ... Additional code for the modal ... -->
-            <div class=" border-white modal dark-mode" id="myModal">
+            <div class="border-white modal dark-mode" id="myModal">
               <div class="modal-dialog modal-dialog-centered">
                 <div class="border-white  modal-content bg-dark text-white">
                   <div class="modal-header">
@@ -87,5 +90,13 @@
         </tbody>
       </table>
     </div>
-  </ng-template>
-</div>
+
+    <ng-template #noResultsSection>
+      <!-- Display your 404 animation or message here only when not loading -->
+      <div *ngIf="!loading" class="text-white fade-in-out">
+        <img src="" alt="">
+        <h1 class="row col-8 font-weight-bolder">404</h1>
+        <h1 class="row col-8 font-weight-bolder">No results found.</h1>
+      </div>
+    </ng-template>
+  </div>

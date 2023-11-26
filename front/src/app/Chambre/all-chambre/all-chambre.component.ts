@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { Chambre } from 'src/app/models/chambre.model';
 import { ChambreService } from 'src/app/services/chambre.service';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Router } from '@angular/router';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-all-chambre',
@@ -20,8 +21,8 @@ export class AllChambreComponent {
   chambres: Chambre[] = [];
   searchQuery: string = '';
   noResults: boolean = false;
-
-  constructor(private chs: ChambreService, private router: Router) {}
+  loading: boolean = true;
+  constructor(private ngZone: NgZone,private chs: ChambreService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadch();
@@ -29,13 +30,19 @@ export class AllChambreComponent {
   navigateToUpdate(ch: Chambre): void {
     this.router.navigate(['/chambre/update', ch.idChambre]);
   }
-  loadch() {
-    this.chs.getChambres().subscribe(
+  loadch() {this.loading = true;
+
+    this.chs.getChambres().pipe(
+      // Introduce a 1-second delay
+      delay(1000)
+    ).subscribe(
       (data: Chambre[]) => {
         this.chambres = data;
+        this.loading = false;
       },
       (error: any) => {
         console.error('Une erreur s\'est produite lors de la récupération des étudiants:', error);
+        this.loading = false;
       }
     );
   }

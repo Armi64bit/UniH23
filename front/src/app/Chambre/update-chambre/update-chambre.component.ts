@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { delay } from 'rxjs';
 import { Bloc } from 'src/app/models/bloc.model';
 import { Chambre, TypeChambre } from 'src/app/models/chambre.model';
 import { BlocServiceService } from 'src/app/services/bloc-service.service';
@@ -23,7 +24,9 @@ export class UpdateChambreComponent {
     }
   };
   blocs: Bloc[]=[]
-
+  updating = false;
+  updateSuccess = false;
+  updateFailure = false;
   constructor(
     private bs : BlocServiceService,
     private chs: ChambreService,
@@ -57,14 +60,29 @@ export class UpdateChambreComponent {
     );
   }
   updateCh(): void {
-    this.chs.updateChambre(this.chambre).subscribe(
+    this.updating = true;
+
+    this.chs.updateChambre(this.chambre).pipe(delay(1000)).subscribe(
       response => {
         // Handle the response
+        this.updateSuccess = true;
+        this.updateFailure = false;
+
         this.router.navigate(['/chambre/all']);
+
+        // Reset the status after a delay
+        setTimeout(() => {
+          this.updating = false;
+          this.updateSuccess = false;
+          this.updateFailure = false;
+        }, 2000);
       },
       error => {
         // Handle errors
         console.error('Error during update:', error);
+        this.updateSuccess = false;
+        this.updateFailure = true;
+        this.updating = false; // Reset in case of error
       }
     );
   }
