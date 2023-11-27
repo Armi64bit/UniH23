@@ -15,6 +15,11 @@ import { DeleteChambreComponent } from './Chambre/delete-chambre/delete-chambre.
 import { UpdateChambreComponent } from './Chambre/update-chambre/update-chambre.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
+import { AllUniversitiesComponent } from './University/all-universities/all-universities.component';
+import { AddUniversityComponent } from './University/add-university/add-university.component';
+import { UpdateUniversityComponent } from './University/update-university/update-university.component';
+import { DeleteUniversityComponent } from './University/delete-university/delete-university.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -29,9 +34,10 @@ import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
     AddChambreComponent,
     AllChambreComponent,
     UpdateChambreComponent,
-
-
-
+    AllUniversitiesComponent,
+    AddUniversityComponent,
+    UpdateUniversityComponent,
+    DeleteUniversityComponent,
 
   ],
   imports: [
@@ -40,7 +46,8 @@ import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    ModalModule.forRoot()// Ensure FormsModule is here
+    ModalModule.forRoot(),
+    NgbModule,
   ],
   providers: [BsModalService],
   bootstrap: [AppComponent]

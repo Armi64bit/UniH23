@@ -1,0 +1,19 @@
+
+<form #universityForm="ngForm" (ngSubmit)="updateUn()">
+    <div class="container">
+        <div id="formtitle">Update University</div>
+  
+        <div class="formfield" id="nomUniversityfield">
+          <label for="nomUniversity">University Name</label>
+            <input type="text" name="nomUniversity" id="nomUniversity" [(ngModel)]="university.nomUniversity" required>
+        </div>
+  
+        <div class="formfield" id="adresse">
+            <label for="adresse">University Address</label>
+              <input type="text" name="adresse" id="adresse" [(ngModel)]="university.adresse" required>
+          </div>
+  
+        <button class="update-button" type="submit">Update</button>
+    </div>
+  </form>
+  
