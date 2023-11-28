@@ -19,7 +19,7 @@ import { StatisticetudiantComponent } from './Etudiant/components/statisticetudi
     UpdateetudiantComponent,
     DeleteetudiantComponent,
     AddetudiantComponent,
-    StatisticetudiantComponent
+    StatisticetudiantComponent,
     
 
     
@@ -28,7 +28,7 @@ import { StatisticetudiantComponent } from './Etudiant/components/statisticetudi
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule, // Ensure FormsModule is here
+    FormsModule, 
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,38 +1,113 @@
 
-<div class="search-bar">
+<!-- <div class="search-bar">
   <input type="text" placeholder="Search" [(ngModel)]="searchQuery" (input)="onSearchChange()">
+</div>-->
+
+ <!--<div class="search-bar">
+  <input type="number" placeholder="CIN" [(ngModel)]="cin">
+  <input type="text" placeholder="Nom" [(ngModel)]="nomEtudiant">
+  <input type="text" placeholder="Prénom" [(ngModel)]="prenomEtudiant">
+  <button (click)="onAdvancedSearch()">Search</button>
+</div> -->
+
+<div class="search-bar">
+  <!-- Single input field for search -->
+  <input type="text" placeholder="Search" [(ngModel)]="searchQuery">
+
+  <!-- Button to trigger the search -->
+  <button (click)="onAdvancedSearch()">Search</button>
 </div>
- <h1>Students</h1>
 
-  <div>
-    <table class="fixed_headers">
-      <thead>
+<!-- Display search results -->
+<div *ngIf="searchResults && searchResults.length > 0">
+  <h2>Search Results</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Last Name</th>
+        <th>First Name</th>
+        <th>University</th>
+        <th>CIN</th>
+        <th>Date of Birth</th>
+        <th>Reservation</th>
+        <th>Delete</th>
+        <th>Update</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let e of searchResults">
+        <td>{{ e.idEtudiant }}</td>
+        <td>{{ e.nomEtudiant }}</td>
+        <td>{{ e.prenomEtudiant }}</td>
+        <td>{{ e.ecole }}</td>
+        <td>{{ e.cin }}</td>
+        <td>{{ e.dateNaissance | date: 'yyyy-MM-dd' }}</td>
+        <td><button  (click)="OpenModel()">Reservation</button></td>
+        <td><button (click)="deleteStudent(e)">Delete</button></td>
+        <td><button class="update-button" (click)="navigateToUpdate(e)">Update</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h1>Students</h1>
+
+<div>
+  <!-- The existing table rendering logic, without modification -->
+  <table class="fixed_headers">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Last Name</th>
+        <th>First Name</th>
+        <th>University</th>
+        <th>CIN</th>
+        <th>Date of Birth</th>
+        <th>Reservation</th>
+        <th>Delete</th>
+        <th>Update</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let e of etudiants">
         <tr>
-          <th>ID</th>
-          <th>Last Name</th>
-          <th>First Name</th>
-          <th>University</th> <!-- Add this for 'ecole' -->
-          <th>CIN</th> <!-- Add this for 'cin' -->
-          <th>Date of Birth</th> 
-          <th>Delete</th> <!-- Add this for 'cin' -->
-          <th>Update</th> 
+          <td>{{ e.idEtudiant }}</td>
+          <td>{{ e.nomEtudiant }}</td>
+          <td>{{ e.prenomEtudiant }}</td>
+          <td>{{ e.ecole }}</td>
+          <td>{{ e.cin }}</td>
+          <td>{{ e.dateNaissance | date: 'yyyy-MM-dd' }}</td>
+          <td><button (click)="OpenModel()">Reservation</button></td>
+          <td><button (click)="deleteStudent(e)">Delete</button></td>
+          <td><button class="update-button" (click)="navigateToUpdate(e)">Update</button></td>
         </tr>
-      </thead>
-      <tbody>
-        <ng-container *ngFor="let e of etudiants">
-          <tr>
-            <td>{{ e.idEtudiant }}</td>
-            <td>{{ e.nomEtudiant }}</td>
-            <td>{{ e.prenomEtudiant }}</td>
-            <td>{{ e.ecole }}</td> <!-- Display 'ecole' field -->
-            <td>{{ e.cin }}</td> <!-- Display 'cin' field -->
-            <td>{{ e.dateNaissance | date: 'yyyy-MM-dd' }}</td> <!-- Display 'dateNaissance' field with a date format -->
-            <td><button (click)="deleteStudent(e)">Delete</button></td>
-            <td><button class="update-button" (click)="navigateToUpdate(e)">Update</button></td>
+      </ng-container>
+    </tbody>
+  </table>
+</div>
 
-        </tr>
-        </ng-container>
-      </tbody>
-    </table>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-white">
+          <div class="modal-header">
+              <h4 class="modal-title">Reservation Details</h4>
+          </div>
+          <div class="modal-body">
+              <!-- Display information from the Bloc interface -->
+              <p class="mb-2"><strong>ID:</strong> q</p>
+              <p class="mb-2"><strong>Name:</strong> q</p>
+              <p class="mb-2"><strong>Capacity:</strong> q</p>
+              <!-- Uncomment the following lines if you have imported and want to display Foyer and Chambre information -->
+              <!--
+              <p>Foyer: {{ bloc.foyer.someProperty }}</p>
+              <p>Chambres: {{ bloc.chambres.map(chambre => chambre.someProperty).join(', ') }}</p>
+              -->
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-danger" (click)="CloseModel()" data-bs-dismiss="modal">Close</button>
+          </div>
+      </div>
   </div>
-  
+</div>

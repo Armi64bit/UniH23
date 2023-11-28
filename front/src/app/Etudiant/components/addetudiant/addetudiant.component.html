@@ -2,37 +2,63 @@
     <div class="container">
         <h1 id="formtitle">Add Student</h1>
         <div class="formfield" id="firstnamefield">
-            <input type="text" name="prenomEtudiant" id="prenomEtudiant" [(ngModel)]="student.prenomEtudiant" required>
+            <input type="text" name="prenomEtudiant" id="prenomEtudiant" [(ngModel)]="student.prenomEtudiant" required minlength="3">
             <label for="prenomEtudiant">First Name</label>
+            <div class="error-container" *ngIf="studentForm.controls['prenomEtudiant'].invalid && (studentForm.controls['prenomEtudiant'].dirty || studentForm.controls['prenomEtudiant'].touched)">
+                <div *ngIf="hasError('prenomEtudiant', 'required')">
+                    First name is required
+                </div>
+                <div *ngIf="hasError('prenomEtudiant', 'minlength') && !hasError('prenomEtudiant', 'required')">
+                    Min 3 characters required
+                </div>
+            </div>
+        
+        
+            
+            
         </div>
 
         <div class="formfield" id="lastnamefield">
-            <input type="text" name="nomEtudiant" id="nomEtudiant" [(ngModel)]="student.nomEtudiant" required>
+            <input type="text" name="nomEtudiant" id="nomEtudiant" [(ngModel)]="student.nomEtudiant" required minlength="3">
             <label for="nomEtudiant">Last Name</label>
+            <div *ngIf="studentForm.controls['nomEtudiant'].invalid && (studentForm.controls['nomEtudiant'].dirty || studentForm.controls['nomEtudiant'].touched)">
+                <div *ngIf="hasError('nomEtudiant', 'required')">
+                    Last name is required
+                </div>
+                <!-- Adjust the condition for minlength validation -->
+                <div *ngIf="!hasError('nomEtudiant', 'required') && studentForm.controls['nomEtudiant'].value.length < 3">
+                    Min 3 characters required
+                </div>
+            </div>
+        
+        
+            
         </div>
 
         <div class="formfield" id="schoolfield">
-            <input type="text" name="ecole" id="ecole" [(ngModel)]="student.ecole" required>
+            <select name="ecole" id="ecole" [(ngModel)]="student.ecole" required class="styled-select">
+                <option value="ESPRIT">Esprit</option>
+                <option value="TEKUP">Tekup</option>
+                <option value="SESAME">Sesame</option>
+            </select>
             <label for="ecole">School</label>
         </div>
 
         <div class="formfield" id="cinfield">
             <input type="number" name="cin" id="cin" [(ngModel)]="student.cin" required>
             <label for="cin">CIN</label>
+            <div *ngIf="studentForm.submitted && studentForm.controls['cin'].invalid">
+                <div *ngIf="hasError('cin', 'required')">
+                    CIN is required
+                </div>
+            </div>
         </div>
 
         <div class="formfield" id="birthdatefield">
-            <input type="date" name="dateNaissance" id="dateNaissance" [(ngModel)]="student.dateNaissance" required>
+            <input type="date" name="dateNaissance" id="dateNaissance" [(ngModel)]="student.dateNaissance" >
             <label for="dateNaissance">Date of Birth</label>
+            
         </div>
-        <div class="formfield" id="reservationfield">
-            <select name="idReservation" id="idReservation" [(ngModel)]="student.reservations[0].idReservation" required class="formfield">
-              <option *ngFor="let reservation of student.reservations" [ngValue]="reservation.idReservation" class="selectfield">{{ reservation.idReservation }}</option>
-            </select>
-            <label for="idReservation">Reservation ID</label>
-          </div>
-          
-
-        <button type="submit">Save</button>
+        <button type="submit" [disabled]="!studentForm.form.valid" [ngStyle]="{'background-color': studentForm.form.valid ? '' : 'hsla(0, 0%, 100%, 0.2)'}">Save</button>
     </div>
 </form>

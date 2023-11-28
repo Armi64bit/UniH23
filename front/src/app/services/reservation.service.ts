@@ -7,9 +7,9 @@ import { Reservation } from '../models/reservation';
   providedIn: 'root'
 })
 export class ReservationService {
-
   constructor(private http: HttpClient) { }
   getReservation(): Observable<Reservation[]> {
     return this.http.get<Reservation[]>('http://localhost:8081/springProjectTwin2/reservation/all');
   }
+ 
 }

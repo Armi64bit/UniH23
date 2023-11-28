@@ -1,11 +1,11 @@
+
+
 import { Etudiant } from "./etudiant.model";
 
 export interface Reservation {
-    idReservation: string;
-    annerUniversitaire: Date;
+    idReservation: String;
     estValide: boolean;
-    etudiants: Etudiant[]; // Assuming Etudiant is another model
-  
-
+    annerUniversitaire: Date;
+    etudiant: Etudiant[]; 
   }
   
