@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Etudiant } from '../models/etudiant.model';
 import { Observable } from 'rxjs';
+import { Reservation } from '../models/reservation';
 
 @Injectable({
   providedIn: 'root'
@@ -52,5 +53,9 @@ searchEtudiant(cin: number, nomEtudiant: string, prenomEtudiant: string): Observ
   return this.http.get<Etudiant[]>(url, { params });
 }
 
-
+  // Add this method to fetch reservations for a specific student
+  getReservationsForEtudiant(idEtudiant: number): Observable<Reservation[]> {
+    const url = `${this.apiUrl}/${idEtudiant}/reservations`; // Replace with your actual endpoint
+    return this.http.get<Reservation[]>(url);
+  }
 }  

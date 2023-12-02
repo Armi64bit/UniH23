@@ -10,6 +10,7 @@ import { UpdateetudiantComponent } from './Etudiant/components/updateetudiant/up
 import { DeleteetudiantComponent } from './Etudiant/components/deleteetudiant/deleteetudiant.component';
 import { AddetudiantComponent } from './Etudiant/components/addetudiant/addetudiant.component';
 import { StatisticetudiantComponent } from './Etudiant/components/statisticetudiant/statisticetudiant.component';
+import { ReservationModalComponent } from './Etudiant/components/reservation-modal/reservation-modal.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { StatisticetudiantComponent } from './Etudiant/components/statisticetudi
     DeleteetudiantComponent,
     AddetudiantComponent,
     StatisticetudiantComponent,
+    ReservationModalComponent,
     
 
     
@@ -28,7 +30,7 @@ import { StatisticetudiantComponent } from './Etudiant/components/statisticetudi
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule, 
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { EtudiantService } from 'src/app/services/etudiant.service';
 import { Etudiant } from 'src/app/models/etudiant.model';
 import { Router } from '@angular/router';
 import { Reservation } from 'src/app/models/reservation';
+import { ModalService } from 'src/app/modal.service';
 
 @Component({
   selector: 'app-alletudiant',
@@ -12,15 +12,16 @@ import { Reservation } from 'src/app/models/reservation';
 })
 export class AlletudiantComponent implements OnInit {
   etudiants: Etudiant[] = [];
-  reservation : Reservation[]=[];
   searchQuery: string = '';
-  cin: number = 0; // Placeholder for cin
-  nomEtudiant: string = ''; // Placeholder for nomEtudiant
-  prenomEtudiant: string = ''; // Placeholder for prenomEtudiant
   searchResults: Etudiant[] = [];
 
+  constructor(
+    private etudiantService: EtudiantService,
+    private router: Router,
+    private modalService: ModalService
+  ) {}
 
-  constructor(private etudiantServiceService: EtudiantService, private router: Router) {}
+  modalOpen = false;
 
   ngOnInit(): void {
     this.loadEtudiants();
@@ -31,7 +32,7 @@ export class AlletudiantComponent implements OnInit {
   }
 
   loadEtudiants() {
-    this.etudiantServiceService.getEtudiants().subscribe(
+    this.etudiantService.getEtudiants().subscribe(
       (data: Etudiant[]) => {
         this.etudiants = data;
       },
@@ -44,7 +45,7 @@ export class AlletudiantComponent implements OnInit {
   deleteStudent(student: Etudiant): void {
     const isConfirmed = confirm('Are you sure you want to delete this student?');
     if (isConfirmed) {
-      this.etudiantServiceService.deleteStudent(student).subscribe(
+      this.etudiantService.deleteStudent(student).subscribe(
         response => {
           // Remove the deleted student from the etudiants array
           this.etudiants = this.etudiants.filter(e => e.idEtudiant !== student.idEtudiant);
@@ -59,7 +60,7 @@ export class AlletudiantComponent implements OnInit {
 
   onSearchChange(): void {
     if (this.searchQuery.trim() !== '') {
-      this.etudiantServiceService.searchEtudiants(this.searchQuery).subscribe(
+      this.etudiantService.searchEtudiants(this.searchQuery).subscribe(
         data => {
           this.etudiants = data;
         },
@@ -73,10 +74,11 @@ export class AlletudiantComponent implements OnInit {
       this.loadEtudiants();
     }
   }
+
   onAdvancedSearch() {
     // Clear previous search results
     this.searchResults = [];
-  
+    
     // Iterate over etudiants and check if the search query matches any criteria
     for (let etudiant of this.etudiants) {
       if (
@@ -92,30 +94,26 @@ export class AlletudiantComponent implements OnInit {
     }
   }
   
+  
   matchesCriteria(value: string): boolean {
     // Convert both the value and the search query to lowercase for a case-insensitive search
     return value.toLowerCase().includes(this.searchQuery.toLowerCase());
   }
+
+  openModals(idEtudiant: number) {
+    this.modalOpen = true;
   
-
-  OpenModel(){
-    const modeldiv=document.getElementById('myModal');
-    if(modeldiv!=null){
-      modeldiv.style.display ='block'
-
-    }
-
+    this.etudiantService.getReservationsForEtudiant(idEtudiant).subscribe(
+      (reservations: Reservation[]) => {
+        // Set reservations in the modal service
+        this.modalService.setReservations(reservations);
+        // Open the modal
+        this.modalService.openModal(true, idEtudiant);
+      },
+      (error) => {
+        console.error('Error fetching reservations', error);
+        // Handle error appropriately
+      }
+    );
   }
-  CloseModel(){
-    const modeldiv=document.getElementById('myModal');
-    if(modeldiv!=null){
-      modeldiv.style.display ='none'
-
-    }
-
-  }
-
-
-
-  
 }
