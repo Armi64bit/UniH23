@@ -223,7 +223,7 @@ h1 {
   -o-transform: skewY(-10deg);
 }
 
-h1 {
+.h1L {
   font: 2em 'Roboto', sans-serif;
   margin-bottom: 40px;
 }
