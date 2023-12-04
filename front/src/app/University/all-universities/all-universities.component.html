@@ -1,0 +1,75 @@
+<!-- Add the following link to include Bootstrap CSS (dark mode) -->
+<!-- <link href="path/to/bootstrap-dark.min.css" rel="stylesheet"> -->
+<!-- The rest of your existing HTML code -->
+<div class="bg-dark" >
+    <div class="container">
+      <div class="search-bar bg-dark dark-mode" [@searchAnimation]="searchQuery">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text bg-dark text-white">
+                    <i class="fas fa-search"></i>
+                  </span>
+                </div>
+                <input class="form-control bg-dark dark-mode text-white" type="text" placeholder="Search" [(ngModel)]="searchQuery" (input)="onSearchChange()">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  <h1 class="text-white">University Section</h1>
+  
+  <div *ngIf="noResults; else universityTable" class="text-white">
+    <!-- Display your 404 animation or message here -->
+    404
+    <p>No results found.</p>
+  </div>
+  
+  <ng-template #universityTable>
+    <div>
+      <table class="table table-dark">
+        <!-- Add 'table-dark' class for dark mode -->
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>University Name</th>
+            <th>University Address</th>
+            <th>Delete</th>
+            <th>Update</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let u of universities">
+            <tr>
+              <td>{{ u.idUniversity }}</td>
+              <td>{{ u.nomUniversity }}</td>
+              <td>{{ u.adresse }}</td>
+              <td><button class="btn btn-danger" (click)="deleteUniversity(u)">Delete</button></td>
+              <td><button class="btn btn-info update-button" (click)="updateUniversity(u.idUniversity)">Update</button></td>
+            </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </ng-template>
+  <!-- Add modal content -->
+<ng-template #modalContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Update University</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <!-- Include the form from your update-university.component.html here -->
+    <app-update-university></app-update-university>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.close('Save click')">Save changes</button>
+  </div>
+</ng-template>
+  </div>
+  
