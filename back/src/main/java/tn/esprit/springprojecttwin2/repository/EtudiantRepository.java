@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import tn.esprit.springprojecttwin2.entites.Etudiant;
 
+import java.util.Date;
 import java.util.List;
 
 public interface EtudiantRepository extends JpaRepository<Etudiant, Long> {
@@ -13,5 +14,14 @@ public interface EtudiantRepository extends JpaRepository<Etudiant, Long> {
     List<Etudiant> findByCin(long cin);
     @Query("SELECT e.ecole, COUNT(e) FROM Etudiant e WHERE e.ecole = :school GROUP BY e.ecole")
     List<Object[]> countStudentsByEcole(@Param("school") String school);
+
+
+
+    @Query("SELECT e FROM Etudiant e WHERE (:cin is null or e.cin = :cin) " +
+            "and (:nomEtudiant is null or e.nomEtudiant = :nomEtudiant) " +
+            "and (:prenomEtudiant is null or e.prenomEtudiant = :prenomEtudiant)")
+    List<Etudiant> advancedSearch(@Param("cin") Long cin,
+                                  @Param("nomEtudiant") String nomEtudiant,
+                                  @Param("prenomEtudiant") String prenomEtudiant);
 
 }

@@ -1,6 +1,5 @@
 package tn.esprit.springprojecttwin2.entites;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,12 +16,11 @@ import java.util.List;
 
 public class Reservation implements Serializable {
     @Id
- @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String idReservation;
     @Temporal(TemporalType.DATE)
     private Date annerUniversitaire;
     private boolean estValide;
     @ManyToMany
-    @JsonManagedReference
     private List<Etudiant> etudiants;
 }
