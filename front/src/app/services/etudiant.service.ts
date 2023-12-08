@@ -58,4 +58,12 @@ searchEtudiant(cin: number, nomEtudiant: string, prenomEtudiant: string): Observ
     const url = `${this.apiUrl}/${idEtudiant}/reservations`; // Replace with your actual endpoint
     return this.http.get<Reservation[]>(url);
   }
+
+
+  getStudentAge(idEtudiant: number): Observable<string> {
+    const url = `${this.apiUrl}/${idEtudiant}/age`;
+    return this.http.get(url, { responseType: 'text' });
+  }
+  
+
 }  

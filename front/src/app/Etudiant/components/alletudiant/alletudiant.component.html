@@ -16,6 +16,7 @@
         <th>University</th>
         <th>CIN</th>
         <th>Date of Birth</th>
+        <th>Age</th> <!-- New column for Age -->
         <th>Reservation</th>
         <th>Delete</th>
         <th>Update</th>
@@ -30,7 +31,8 @@
           <td>{{ e.ecole }}</td>
           <td>{{ e.cin }}</td>
           <td>{{ e.dateNaissance | date: 'yyyy-MM-dd' }}</td>
-          <td><button (click)="openModals(e.idEtudiant)">Reservation</button></td>
+          <td>{{ studentAges[e.idEtudiant] }}</td> <!-- Display Age -->
+          <td><button class="res-button"  (click)="openModals(e.idEtudiant)">Reservation</button></td>
           <td><button (click)="deleteStudent(e)">Delete</button></td>
           <td><button class="update-button" (click)="navigateToUpdate(e)">Update</button></td>
         </tr>

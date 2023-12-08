@@ -11,5 +11,6 @@ export interface Etudiant {
     cin: number;
     dateNaissance: Date;
     reservation: Reservation[]; // Make sure to import the correct Chambre model
+
 }
   

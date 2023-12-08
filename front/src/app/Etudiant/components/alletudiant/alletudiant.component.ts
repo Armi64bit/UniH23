@@ -4,6 +4,7 @@ import { Etudiant } from 'src/app/models/etudiant.model';
 import { Router } from '@angular/router';
 import { Reservation } from 'src/app/models/reservation';
 import { ModalService } from 'src/app/modal.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-alletudiant',
@@ -14,6 +15,8 @@ export class AlletudiantComponent implements OnInit {
   etudiants: Etudiant[] = [];
   searchQuery: string = '';
   searchResults: Etudiant[] = [];
+  studentAges: { [id: number]: string } = {};
+
 
   constructor(
     private etudiantService: EtudiantService,
@@ -35,12 +38,26 @@ export class AlletudiantComponent implements OnInit {
     this.etudiantService.getEtudiants().subscribe(
       (data: Etudiant[]) => {
         this.etudiants = data;
+  
+        // Fetch ages for each student
+        this.etudiants.forEach(student => {
+          this.etudiantService.getStudentAge(student.idEtudiant).subscribe(
+            age => {
+              this.studentAges[student.idEtudiant] = age;
+            },
+            error => {
+              console.error('Error fetching student age:', error);
+            }
+          );
+        });
       },
-      (error: any) => {
-        console.error('Une erreur s\'est produite lors de la récupération des étudiants:', error);
+      error => {
+        console.error('Error fetching students:', error);
       }
     );
   }
+  
+
 
   deleteStudent(student: Etudiant): void {
     const isConfirmed = confirm('Are you sure you want to delete this student?');
@@ -57,6 +74,8 @@ export class AlletudiantComponent implements OnInit {
       );
     }
   }
+
+  
 
   onSearchChange(): void {
     if (this.searchQuery.trim() !== '') {

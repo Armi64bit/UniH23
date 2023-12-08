@@ -1,45 +1,43 @@
 .fixed_headers {
-    width: 750px;
-    table-layout: fixed;
-    border-collapse: collapse;
-  }
-  .fixed_headers th {
-    text-decoration: underline;
-  }
-  .fixed_headers th,
-  .fixed_headers td {
-    padding: 5px;
-    text-align: left;
-  }
-  .fixed_headers td:nth-child(1),
-  .fixed_headers th:nth-child(1) {
-    min-width: 200px;
-  }
-  .fixed_headers td:nth-child(2),
-  .fixed_headers th:nth-child(2) {
-    min-width: 200px;
-  }
-  .fixed_headers td:nth-child(3),
-  .fixed_headers th:nth-child(3) {
-    width: 350px;
-  }
-  .fixed_headers thead {
-    background-color: #333;
-    color: #fdfdfd;
-  }
-  .fixed_headers thead tr {
-    display: block;
-    position: relative;
-  }
-  .fixed_headers tbody {
-    display: block;
-    overflow: auto;
-    width: 100%;
-    height: 300px;
-  }
-  .fixed_headers tbody tr:nth-child(even) {
-    background-color: #ddd;
-  }
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.fixed_headers th,
+.fixed_headers td {
+  text-align: left;
+  padding: 5px;
+  width: calc(100% / 10); /* Adjust the number of columns (10 in this case) */
+}
+
+.fixed_headers thead {
+  background-color: #333;
+  color: #fdfdfd;
+}
+
+.fixed_headers thead tr {
+  display: block;
+  position: relative;
+}
+
+.fixed_headers tbody {
+  display: block;
+  overflow: auto;
+  width: 100%;
+  max-height: 300px; /* Adjust the maximum height as needed */
+}
+
+.fixed_headers tbody tr:nth-child(even) {
+  background-color: #ddd;
+}
+.fixed_headers th,
+.fixed_headers td {
+  width: calc(100% / 10); /* Adjust the number of columns (10 in this case) */
+}
+
+/* ... Other styles ... */
+
   .old_ie_wrapper {
     height: 300px;
     width: 750px;
@@ -65,7 +63,7 @@
     border: 1px solid #FFF;
     background:red;
     color: #FFF;
-    border-radius: 25px;
+    border-radius: 10px;
     transition: all 300ms ease-in-out;
   }
   
@@ -74,6 +72,10 @@
   }
   .update-button {
     background-color: rgb(12, 79, 194); /* Orange background */
+  }
+  .res-button{
+    background-color:green; /* Orange background */
+
   }
   
   .update-button:hover {
