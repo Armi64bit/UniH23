@@ -54,3 +54,10 @@ button:hover {
 .ng-valid {
   border-color: #4caf50; /* Green border for valid fields */
 }
+.error {
+  border: 1px solid red;
+}
+
+.success {
+  border: 1px solid green;
+}
