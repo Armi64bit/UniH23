@@ -1,0 +1,8 @@
+@media only screen and (max-width: 600px) {
+    /* Adjust chart size for smaller screens */
+    #chartCanvas {
+      width: 100%;
+      height: auto;
+    }
+  }
+  

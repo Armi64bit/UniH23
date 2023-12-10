@@ -11,6 +11,8 @@ const routes: Routes = [
   { path: 'students/add', component: AddetudiantComponent },
   { path: 'students/update/:id', component: UpdateetudiantComponent },
   { path: 'statistic/students', component: StatisticetudiantComponent },
+  { path: 'alletudiant', loadChildren: () => import('./alletudiant/alletudiant.module').then(m => m.AlletudiantModule) },
+
 
 
   // ... other routes ...

@@ -5,6 +5,10 @@ License - nucleoapp.com/license/
 Created using IcoMoon - icomoon.io
 
 -------------------------------- */
+/* Example media query for smaller screens */
+@media only screen and (max-width: 600px) {
+  /* Your styles for smaller screens go here */
+}
 
 @font-face {
   font-family: 'Nucleo';

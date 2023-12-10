@@ -1,22 +1,68 @@
 /* Add this CSS to your component's stylesheet or a global stylesheet */
+
 .card-with-border-radius {
-    background-color: #DDF2FD; /* Set the background color to pink */
-    border-radius: 10px; /* Add border radius for rounded corners */
-    padding: 40px; /* Add some padding for spacing */
+    background-color: #DDF2FD;
+    border-radius: 10px;
+    padding: 20px; /* Adjust padding for spacing */
     margin: 5px;
     /* You can add more styling as needed */
 }
-   /* Let's add some colors and styling for our sidebar navigation */
-   body {
+
+/* Base styles for larger screens */
+@media only screen and (max-width: 767px) {
+    .card-with-border-radius {
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+
+    body {
+        flex-direction: column; /* Stack elements vertically for smaller screens */
+    }
+
+    .sidebar {
+        width: 100%; /* Take up the full width on smaller screens */
+        height: auto; /* Auto height based on content */
+        padding-top: 10px;
+    }
+
+    .content {
+        flex: 1;
+        padding: 10px;
+    }
+}
+
+/* Styles for screens up to 480px wide (e.g., smartphones) */
+@media only screen and (max-width: 480px) {
+    .card-with-border-radius {
+        padding: 5px; /* Further adjust padding for very small screens */
+    }
+
+    .sidebar {
+        padding-top: 5px;
+    }
+
+    .logo img {
+        width: 50px; /* Adjust the width of the admin image for smaller screens */
+    }
+
+    .admin-name {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
-   
 }
 
 .sidebar {
-    height: 100vh; /* Set the sidebar height to 100% of viewport height */
+    height: 100vh;
     width: 250px;
     background-color: #164863;
     overflow-x: hidden;
@@ -43,7 +89,7 @@
 }
 
 .logo img {
-    width: 100px; /* Adjust the width of the admin image as needed */
+    width: 100px;
     height: auto;
     border-radius: 50%;
 }

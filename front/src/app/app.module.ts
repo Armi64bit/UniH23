@@ -16,12 +16,10 @@ import { ReservationModalComponent } from './Etudiant/components/reservation-mod
   declarations: [
     AppComponent,
     AllBlocsComponent,
-    AlletudiantComponent,
     UpdateetudiantComponent,
     DeleteetudiantComponent,
     AddetudiantComponent,
     StatisticetudiantComponent,
-    ReservationModalComponent,
    
     
 
