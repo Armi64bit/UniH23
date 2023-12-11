@@ -12,4 +12,6 @@ public interface ChambreRepository extends JpaRepository<Chambre, Long> {
     @Query("SELECT c.bloc FROM Chambre c WHERE c.idChambre = :idChambre")
     Bloc findBlocByChambreId(@Param("idChambre") long idChambre);
     Set<Chambre> findChambreByBloc_NomBlocContains(String blocname);
+    Chambre findByNumeroChambre(long numeroChambre);
+
 }

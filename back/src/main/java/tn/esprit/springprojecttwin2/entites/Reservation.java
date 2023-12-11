@@ -1,5 +1,6 @@
 package tn.esprit.springprojecttwin2.entites;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,5 +23,6 @@ public class Reservation implements Serializable {
     private Date annerUniversitaire;
     private boolean estValide;
     @ManyToMany
+    @JsonIgnore
     private List<Etudiant> etudiants;
 }

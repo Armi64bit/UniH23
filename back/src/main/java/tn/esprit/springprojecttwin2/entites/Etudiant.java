@@ -1,5 +1,6 @@
 package tn.esprit.springprojecttwin2.entites;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,6 +24,7 @@ public class Etudiant implements Serializable {
     private long cin;
     private String ecole;
     @ManyToMany (mappedBy = "etudiants") /* etudiant *-->*reservation *//* mapped by soit f etudiant soit f reservation khater zouz * *//* => table d'association*/
+    @JsonIgnore
     private List<Reservation> reservations;
 
     @Temporal (TemporalType.DATE)
