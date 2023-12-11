@@ -6,6 +6,7 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor /*constructeur non pram*/
@@ -21,9 +22,20 @@ public class Bloc implements Serializable {
     private long idBloc;
     private String nomBloc;
     private long capacityBloc;
-    @ManyToOne /* foyer 1-->*bloc */
+
+    @ManyToOne
     private Foyer foyer;
-    @OneToMany (mappedBy = "bloc")/* bloc 1-->* chambre */
+
+    @OneToMany(mappedBy = "bloc", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Chambre> chambres;
+
+    @ManyToMany
+    @JoinTable(
+            name = "bloc_etudiant",
+            joinColumns = @JoinColumn(name = "bloc_id"),
+            inverseJoinColumns = @JoinColumn(name = "etudiant_id")
+    )
+    private Set<Etudiant> etudiants;
+
 }

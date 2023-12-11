@@ -8,6 +8,7 @@ import lombok.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor /*constructeur non pram*/
@@ -30,5 +31,9 @@ public class Etudiant implements Serializable {
 
     @Temporal (TemporalType.DATE)
     private Date dateNaissance;
+    @ManyToMany(mappedBy = "etudiants", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Set<Bloc> blocs;
+
 
 }

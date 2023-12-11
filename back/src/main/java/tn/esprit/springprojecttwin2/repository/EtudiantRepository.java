@@ -24,6 +24,7 @@ public interface    EtudiantRepository extends JpaRepository<Etudiant, Long> {
     List<Etudiant> advancedSearch(@Param("cin") Long cin,
                                   @Param("nomEtudiant") String nomEtudiant,
                                   @Param("prenomEtudiant") String prenomEtudiant);
-
+    @Query("SELECT e FROM Etudiant e JOIN e.blocs b WHERE b.idBloc IS NOT NULL")
+    List<Etudiant> findStudentsAssignedToBlocks();
 
 }
