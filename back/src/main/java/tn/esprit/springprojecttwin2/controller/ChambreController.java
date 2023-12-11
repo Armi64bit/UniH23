@@ -9,9 +9,11 @@ import tn.esprit.springprojecttwin2.entites.Chambre;
 import tn.esprit.springprojecttwin2.services.IChambreService;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @AllArgsConstructor
+
 @RequestMapping("/chambre")
 public class ChambreController {
     @Autowired
@@ -28,6 +30,10 @@ public class ChambreController {
         Chambre chambre = chambreService.ChambreById(chId);
         return chambre;
     }
+    @GetMapping("/search/{nombloc}")
+    public Set<Chambre> search(@PathVariable("nombloc") String nombloc) {
+        return chambreService.findbyblocname(nombloc);
+    }
     @PostMapping("/add")
     public Chambre addChambre(@RequestBody Chambre c) {
         Chambre chambre = chambreService.addChambre(c);
@@ -39,6 +45,7 @@ public class ChambreController {
         chambreService.removeChambre(chId);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200", methods = RequestMethod.PUT)
     @PutMapping("/modify")
     public Chambre modifyChambre(@RequestBody Chambre c) {
         Chambre chambre = chambreService.UpdateChambre(c);

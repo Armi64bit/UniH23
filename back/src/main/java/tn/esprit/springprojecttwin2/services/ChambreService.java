@@ -8,6 +8,7 @@ import tn.esprit.springprojecttwin2.entites.Chambre;
 import tn.esprit.springprojecttwin2.repository.ChambreRepository;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 @AllArgsConstructor
@@ -39,5 +40,10 @@ public class ChambreService implements IChambreService {
     @Override
     public Bloc getBlocByChambreId(long idChambre) {
         return chambreRep.findBlocByChambreId(idChambre);
+    }
+
+    @Override
+    public Set<Chambre> findbyblocname(String blocname) {
+        return chambreRep.findChambreByBloc_NomBlocContains(blocname);
     }
 }

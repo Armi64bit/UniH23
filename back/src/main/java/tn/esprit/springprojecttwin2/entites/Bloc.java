@@ -1,5 +1,6 @@
 package tn.esprit.springprojecttwin2.entites;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor /*constructeur param*/
 @ToString
 
+
 public class Bloc implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,5 +24,6 @@ public class Bloc implements Serializable {
     @ManyToOne /* foyer 1-->*bloc */
     private Foyer foyer;
     @OneToMany (mappedBy = "bloc")/* bloc 1-->* chambre */
+    @JsonIgnore
     private List<Chambre> chambres;
 }

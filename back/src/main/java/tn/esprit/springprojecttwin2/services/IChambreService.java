@@ -4,6 +4,7 @@ import tn.esprit.springprojecttwin2.entites.Bloc;
 import tn.esprit.springprojecttwin2.entites.Chambre;
 
 import java.util.List;
+import java.util.Set;
 
 public interface IChambreService {
     public List<Chambre> AllChambres();
@@ -12,4 +13,6 @@ public interface IChambreService {
     public void removeChambre(long id);
     public Chambre UpdateChambre(Chambre b);
     public Bloc getBlocByChambreId(long idChambre);
+    public Set<Chambre> findbyblocname(String blocname);
+
 }
