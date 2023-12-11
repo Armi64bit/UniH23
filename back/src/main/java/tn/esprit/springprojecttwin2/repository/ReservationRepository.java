@@ -13,7 +13,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, String
 
 
 
-    @Query("SELECT reservation FROM Reservation reservation JOIN reservation.etudiants etudiants WHERE etudiants.nomet = :nom")
+    @Query("SELECT reservation FROM Reservation reservation JOIN reservation.etudiants etudiants WHERE etudiants.nomEtudiant = :nom")
     List<Reservation> retrieveReservationsByEtudiantNom(@Param("nom") String nom);
 
    // List<Reservation> findByEtudiantsNomEtudiantStartingWithIgnoreCase(String prefixeNom);
