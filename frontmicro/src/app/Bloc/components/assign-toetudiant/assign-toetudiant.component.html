@@ -1,0 +1,31 @@
+<p>assign-toetudiant works!</p>
+
+<form (ngSubmit)="assignToEtudiant()">
+    <label for="etudiant">Sélectionnez un étudiant:</label>
+    <select *ngIf="etudiants$ | async as etudiants" id="etudiant" [(ngModel)]="selectedEtudiantId" name="etudiant">
+        <option *ngFor="let etudiant of etudiants" [value]="etudiant.idEtudiant">{{ etudiant.idEtudiant }}</option>
+    </select>
+
+    <label for="bloc">Sélectionnez un bloc:</label>
+    <select *ngIf="blocs$ | async as blocs" id="bloc" [(ngModel)]="selectedBlocId" name="bloc">
+        <option *ngFor="let bloc of blocs" [value]="bloc.idBloc">{{ bloc.nomBloc }}</option>
+    </select>
+
+    <button type="submit">Valider</button>
+</form>
+
+<div *ngIf="selectedBlocId">
+    <h2>Liste des étudiants affectés au bloc</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom Etudiant</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let etudiant of getEtudiantsAffectes() | async">
+                <td>{{ etudiant.nomEtudiant }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,44 @@
+<div class="search-bar">
+  <!-- Single input field for search with (input) event binding -->
+  <input type="text" placeholder="Search" [(ngModel)]="searchQuery" (input)="onAdvancedSearch()">
+</div>
+
+<h1>Students</h1>
+
+<div>
+  <!-- The existing table rendering logic, with modification for displaying search results -->
+  <table class="fixed_headers">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Last Name</th>
+        <th>First Name</th>
+        <th>University</th>
+        <th>CIN</th>
+        <th>Date of Birth</th>
+        <th>Age</th> <!-- New column for Age -->
+        <th>Reservation</th>
+        <th>Delete</th>
+        <th>Update</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let e of (searchResults.length > 0 ? searchResults : etudiants)">
+        <tr>
+          <td>{{ e.idEtudiant }}</td>
+          <td>{{ e.nomEtudiant }}</td>
+          <td>{{ e.prenomEtudiant }}</td>
+          <td>{{ e.ecole }}</td>
+          <td>{{ e.cin }}</td>
+          <td>{{ e.dateNaissance | date: 'yyyy-MM-dd' }}</td>
+          <td>{{ studentAges[e.idEtudiant] }}</td> <!-- Display Age -->
+          <td><button class="res-button"  (click)="openModals(e.idEtudiant)">Reservation</button></td>
+          <td><button (click)="deleteStudent(e)">Delete</button></td>
+          <td><button class="update-button" (click)="navigateToUpdate(e)">Update</button></td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>
+
+<app-reservation-modal *ngIf="modalOpen"></app-reservation-modal>

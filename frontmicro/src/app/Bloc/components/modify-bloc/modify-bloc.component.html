@@ -1,0 +1,23 @@
+<div class="d-flex justify-content-center align-items-center">
+  <h2>Modifier un Bloc</h2>
+</div>
+
+<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+  <form (ngSubmit)="updateBloc()" style="width: 500px; height: 500px;">
+
+      <div class="form-group">
+          <label>Nom Bloc</label>
+          <input type="text" class="form-control" id="nomBloc" placeholder="Nom Bloc" pattern="[a-zA-Z ]*"
+              [(ngModel)]="bloc.nomBloc" required name="NomBloc">
+      </div>
+
+      <div class="form-group">
+          <label>Capacite Bloc</label>
+          <input type="number" class="form-control" id="capaciteBloc" placeholder="Capacite du Bloc" required min="0"
+              name="capacityBloc" [(ngModel)]="bloc.capacityBloc">
+      </div>
+
+      <button type="submit" class="btn btn-outline-success">Modifier</button>
+
+  </form>
+</div>

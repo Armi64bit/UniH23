@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+</head>
+<body class="bg-dark dark-mode">
+  <div class="container-fluid ">
+    <div class="row">
+        <nav class=" col-md-3 col-lg-2 d-md-block bg-dark sidebar">
+            <div class="sidebar-sticky">
+                <div class="logo text-center">
+                    <img src="../assets/images/unihaven.png" alt="logo" class="img-fluid" style="max-width: 150px; margin: 10px 0;">
+                </div>
+
+                <div class="logo text-center">
+                    <img src="../assets/images/users/user1.jpg" alt="admin" class="rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
+                    <div class="admin-name mt-2">Admin Name</div>
+                </div>
+
+                <ul class="nav flex-column">
+                    <!-- Etudiants Dropdown -->
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="statistic/students" (click)="toggleEtudiants()">
+                            <i class="fa fa-user"></i> Etudiants
+                        </a>
+                        <div *ngIf="showEtudiantsOptions">
+                            <ul class="nav flex-column ml-3">
+                                <li class="nav-item">
+                                    <a class="nav-link" routerLink="/students/add">
+                                        <i class="fa fa-users"></i> All Students
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" routerLink="/students/all">
+                                        <i class="fa fa-user-plus"></i> Add Student
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" routerLink="/bloc/all" (click)="togglebloc()">
+                          <i class="fa fa-user"></i> Bloc
+                      </a>
+                      <div *ngIf="showblOptions">
+                          <ul class="nav flex-column ml-3">
+                              <li class="nav-item">
+                                  <a class="nav-link" routerLink="/bloc/all">
+                                      <i class="fa fa-users"></i> All Bloc
+                                  </a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="nav-link" routerLink="/bloc/add">
+                                      <i class="fa fa-user-plus"></i> Add Bloc
+
+                                  </a>
+
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" routerLink="bloc/assign-to-etudiant">
+                                    <i class="fa fa-user-plus"></i> Assign to Etudiant
+
+                                </a>
+
+                            </li>
+
+                          </ul>
+                      </div>
+                  </li>
+                    <!-- Other Links with Icons -->
+
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/university">
+                            <i class="fa fa-university"></i> University
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/reservations">
+                            <i class="fa fa-calendar-alt"></i> Reservations
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" (click)="togglef()">
+                          <i class="fa fa-user"></i> Foyer
+                      </a>
+                      <div *ngIf="showfoOptions">
+                          <ul class="nav flex-column ml-3">
+                              <li class="nav-item">
+                                  <a class="nav-link" routerLink="/foyer/all">
+                                      <i class="fa fa-users"></i> All Foyer
+                                  </a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="nav-link" routerLink="/foyer/add">
+                                      <i class="fa fa-user-plus"></i> Add Foyer
+                                  </a>
+                              </li>
+                          </ul>
+                      </div>
+                  </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/chambre/all" (click)="togglech()">
+                            <i class="fa fa-user"></i> Chambre
+                        </a>
+                        <div *ngIf="showchOptions">
+                            <ul class="nav flex-column ml-3">
+                                <li class="nav-item">
+                                    <a class="nav-link" routerLink="/chambre/all">
+                                        <i class="fa fa-users"></i> All Chambre
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" routerLink="/chambre/add">
+                                        <i class="fa fa-user-plus"></i> Add Chambre
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+
+    <div class="bg-dark dark-mode content card-with-border-radius">
+        <!-- Router Outlet -->
+        <!-- <app-add-chambre></app-add-chambre> -->
+        <!-- <app-all-chambre></app-all-chambre> -->
+        <router-outlet></router-outlet>
+    </div>
+
+</div>
+</div>
+</body>
+</html>

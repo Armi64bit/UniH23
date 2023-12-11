@@ -1,0 +1,35 @@
+<form #studentForm="ngForm" (ngSubmit)="updateCh()">
+  <div class="text-white dark-mode bg-dark container">
+    <div class="dark-mode bg-dark text-white" id="formtitle">Update Chambre</div>
+
+    <div class="formfield" id="firstnamefield">
+      <label for="prenomEtudiant">Num chambre</label>
+      <input class="text-white dark-mode bg-dark" type="text" name="prenomEtudiant" id="prenomEtudiant" [(ngModel)]="chambre.numeroChambre" required>
+    </div>
+
+    <div class="formfield" id="lastnamefield">
+      <label for="typeC">Type Chambre</label>
+      <select class="text-white dark-mode bg-dark" name="typeC" id="typeC" [(ngModel)]="chambre.typeC" required>
+        <option value="SIMPLE">Simple</option>
+        <option value="DOUBLE">Double</option>
+        <option value="TRIPLE">Triple</option>
+      </select>
+    </div>
+
+
+
+    <button class="update-button" type="submit" [disabled]="updating">
+      <span >Update</span>
+
+    </button>
+
+    <span *ngIf="updating">
+
+              <p class="h1L mb-4">Updating...</p>
+      <div class="spinner-border text-light" role="status">
+      </div>
+    </span>
+    <span *ngIf="updateSuccess" class="text-success">&#10003; Success</span>
+    <span *ngIf="updateFailure" class="text-danger">&#10007; Failed</span>
+  </div>
+</form>

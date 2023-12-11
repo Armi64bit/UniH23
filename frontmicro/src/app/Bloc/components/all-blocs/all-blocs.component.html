@@ -1,0 +1,39 @@
+<!-- all-blocs.component.html -->
+<div>
+  <h1>all-blocs works!</h1>
+
+  <table class="table table-striped">
+      <thead>
+          <tr>
+              <th>ID Bloc</th>
+              <th>Nom du Bloc</th>
+              <th>Capacité du Bloc</th>
+              <th>Nom du Foyer</th>
+              <th>Actions</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let bloc of blocs">
+              <td>{{ bloc.idBloc }}</td>
+              <td>{{ bloc.nomBloc }}</td>
+              <td>{{ bloc.capacityBloc }}</td>
+              <td>{{ bloc.foyer.nomFoyer }}</td>
+              <td>
+                  <button class="btn btn-primary" (click)="openModifyForm(bloc)">Modifier</button>
+                  <button class="btn btn-primary" (click)="DeleteBloc(bloc)">Supprimer</button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+
+
+
+
+
+</div>
+
+
+
+
+
+

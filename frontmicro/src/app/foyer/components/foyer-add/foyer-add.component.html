@@ -1,0 +1,21 @@
+<form (ngSubmit)="addFoyer()">
+  <div class="dark-mode bg-dark text-white container">
+    <div id="formtitle">Add Foyer</div>
+
+    <div class="formfield" id="nomFoyerField">
+      <label for="nomFoyer">Nom Foyer</label>
+      <input class="dark-mode bg-dark text-white" type="text" name="nomFoyer" id="nomFoyer" [(ngModel)]="foyer.nomFoyer" required>
+
+    </div>
+
+    <div class="formfield" id="capaciteFoyerField">
+      <label for="capaciteFoyer">Capacite Foyer</label>
+      <input class="dark-mode bg-dark text-white" type="number" name="capaciteFoyer" id="capaciteFoyer" [(ngModel)]="foyer.capaciteFoyer" required>
+
+    </div>
+
+    <!-- Add more fields as needed for the Foyer model -->
+
+    <button type="submit" >Save</button>
+  </div>
+</form>

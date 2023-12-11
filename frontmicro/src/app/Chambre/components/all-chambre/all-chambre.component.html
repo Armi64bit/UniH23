@@ -1,0 +1,78 @@
+<!-- Add the following link to include Bootstrap CSS (dark mode) -->
+<!-- <link href="path/to/bootstrap-dark.min.css" rel="stylesheet"> -->
+
+<!-- The rest of your existing HTML code -->
+<div class="bg-dark">
+  <div class="container">
+    <div class="search-bar bg-dark dark-mode" [@searchAnimation]="searchQuery">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text bg-dark text-white">
+                  <i class="fas fa-search"></i>
+                </span>
+              </div>
+              <input class="form-control bg-dark dark-mode text-white" type="text" placeholder="Search" [(ngModel)]="searchQuery" (input)="onSearchChange()">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h1 class="text-white fadeIn">Chambre</h1>
+  <div class="bg-dark">
+    <!-- ... Other HTML code ... -->
+
+    <div *ngIf="loading" class="text-center text-white fade-in-out my-4">
+      <!-- Display Bootstrap spinner while loading -->
+      <p class="h1L mb-4">LOADING...</p>
+      <div id="loading"></div>
+    </div>
+
+    </div>
+
+    <div *ngIf="!loading; else noResultsSection" class="fadeIn">
+      <!-- Display the table when not loading -->
+      <table class="text-capitalize fade show delay-2s table table-dark table-hover">
+        <!-- Add 'table-dark' class for dark mode -->
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Num Chambre</th>
+            <th>Type</th>
+            <th>Delete</th>
+            <th>Update</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let e of chambres">
+            <tr>
+              <td>{{ e.idChambre }}</td>
+              <td>{{ e.numeroChambre }}</td>
+              <td>{{ e.typeC }}</td>
+
+              <td><button class="col-8 btn btn-danger" (click)="deleteStudent(e)">Delete</button></td>
+              <td><button class="col-8 btn btn-info update-button" (click)="navigateToUpdate(e)">Update</button></td>
+
+
+            </tr>
+
+            <!-- ... Additional code for the modal ... -->
+
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+
+    <ng-template #noResultsSection>
+      <!-- Display your 404 animation or message here only when not loading -->
+      <div *ngIf="!loading" class="text-white fade-in-out">
+        <img src="" alt="">
+        <h1 class="row col-8 font-weight-bolder">404</h1>
+        <h1 class="row col-8 font-weight-bolder">No results found.</h1>
+      </div>
+    </ng-template>
+  </div>
