@@ -6,6 +6,7 @@ import org.springframework.data.repository.query.Param;
 import tn.esprit.springprojecttwin2.entites.Bloc;
 import tn.esprit.springprojecttwin2.entites.Chambre;
 
+import java.util.List;
 import java.util.Set;
 
 public interface ChambreRepository extends JpaRepository<Chambre, Long> {
@@ -13,5 +14,7 @@ public interface ChambreRepository extends JpaRepository<Chambre, Long> {
     Bloc findBlocByChambreId(@Param("idChambre") long idChambre);
     Set<Chambre> findChambreByBloc_NomBlocContains(String blocname);
     Chambre findByNumeroChambre(long numeroChambre);
+    List<Chambre> findByBloc(Bloc bloc);
+
 
 }

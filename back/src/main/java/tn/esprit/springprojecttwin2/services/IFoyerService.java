@@ -11,5 +11,9 @@ public interface IFoyerService {
     public Foyer addFoyer(Foyer b);
     public void removeFoyer(long id);
     public Foyer UpdateFoyer(Foyer b);
+    public List<Foyer> FoyersByCapacityGreaterThan(long capacity);
+
+    Foyer getFoyerDetails(Long id);
+
 
 }
