@@ -16,7 +16,13 @@ export class AddChambreComponent {
     numeroChambre: 0,
     typeC: TypeChambre.SIMPLE,
     reservations: [],
+    bloc: {
+      idBloc: 0,
+      nomBloc: '',
+      capacityBloc: 0,
+      foyer: { idFoyer: 0, nomFoyer: '' },
 
+    }
   };
   blocs: Bloc[]=[]
 

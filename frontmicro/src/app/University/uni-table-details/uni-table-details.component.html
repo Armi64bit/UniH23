@@ -1,0 +1,8 @@
+<div>
+    <p style="font-weight: bold;"> <span style="color: blue;">ID:</span>  {{ university?.idUniversity }}</p>
+    <p style="font-weight: bold;"><span style="color: blue;">University Name:</span>  {{ university?.nomUniversity }}</p>
+    <p style="font-weight: bold;"><span style="color: blue;">University Address:</span> {{ university?.adresse }}</p>
+    <p style="font-weight: bold;"><span style="color: blue;">Foyer Name:</span> {{ university?.foyer?.nomFoyer || 'N/A' }}</p>
+    <!-- Add other details as needed -->
+    <button class="btn btn-primary rounded" (click)="closeDetails()">Close</button>
+  </div>

@@ -17,7 +17,7 @@ AddetudiantComponent,
 AlletudiantComponent,
 UpdateetudiantComponent,
 ReservationModalComponent,
-HighlightDirective,
+//HighlightDirective,
 PointerHandDirective,
 
 

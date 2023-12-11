@@ -17,7 +17,13 @@ export class UpdateChambreComponent {
     numeroChambre: 0,
     typeC: TypeChambre.SIMPLE,
     reservations: [],
+    bloc: {
+      idBloc: 0,
+      nomBloc: '',
+      capacityBloc: 0,
+          foyer: { idFoyer: 0, nomFoyer: '' },
 
+    }
   };
   blocs: Bloc[]=[]
   updating = false;
@@ -40,10 +46,10 @@ export class UpdateChambreComponent {
         console.error('Error fetching blocs', error);
       }
     );
-      const id = parseInt(this.route.snapshot.params['id'], 10); // Get ID from route and parse it as a number
-      if (id) {
-        this.fetchch(id);
-      }
+    const id = parseInt(this.route.snapshot.params['id'], 10); // Get ID from route and parse it as a number
+    if (id) {
+      this.fetchch(id);
+    }
   }
   fetchch(id: number): void {
     this.chs.getChambre(id).subscribe( // Correct method to fetch student data

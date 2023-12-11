@@ -1,0 +1,98 @@
+<!--
+  <form #universityForm="ngForm" (ngSubmit)="addUniversity()">
+  <div class="container">
+    <div id="formtitle">Add University</div>
+
+    <div class="formfield" id="nomUniversityfield">
+      <label for="nomUniversity">University Name</label>
+      <input
+        type="text"
+        name="nomUniversity"
+        id="nomUniversity"
+        [(ngModel)]="university.nomUniversity"
+        required
+        minlength="3"
+      />
+      <div
+        *ngIf="universityForm.controls['nomUniversity'].invalid && (universityForm.controls['nomUniversity'].dirty || universityForm.controls['nomUniversity'].touched)"
+        class="error-message"
+      >
+        <div *ngIf="universityForm.controls['nomUniversity'].errors?.['required']">University Name is required.</div>
+        <div *ngIf="universityForm.controls['nomUniversity'].errors?.['minlength']">Minimum length is 3 characters.</div>
+      </div>
+    </div>
+
+    <div class="formfield" id="adressefield">
+      <label for="adresse">University Address</label>
+      <input
+        type="text"
+        name="adresse"
+        id="adresse"
+        [(ngModel)]="university.adresse"
+        required
+        minlength="3"
+      />
+      <div
+        *ngIf="universityForm.controls['adresse'].invalid && (universityForm.controls['adresse'].dirty || universityForm.controls['adresse'].touched)"
+        class="error-message"
+      >
+        <div *ngIf="universityForm.controls['adresse'].errors?.['required']">University Address is required.</div>
+        <div *ngIf="universityForm.controls['adresse'].errors?.['minlength']">Minimum length is 3 characters.</div>
+      </div>
+    </div>
+
+
+    <div class="formfield" id="foyerfield">
+      <label for="foyer">Foyer</label>
+      <select name="foyer" id="foyer" [(ngModel)]="university.foyer" required>
+        <option *ngFor="let foyer of foyers" [ngValue]="foyer">{{ foyer.nomFoyer }}</option>
+      </select>
+    </div>
+
+
+  <button type="submit" [disabled]="universityForm.invalid">Save</button>
+</div>
+</form>
+ -->
+ <form [formGroup]="universityForm" (ngSubmit)="addUniversity()" class="container">
+  <!-- University Name -->
+  <div class="formfield" id="nomUniversityfield">
+    <label for="nomUniversity">University Name</label>
+    <input type="text" formControlName="nomUniversity" />
+    <div *ngIf="universityForm.get('nomUniversity')?.hasError('required') && universityForm.get('nomUniversity')?.touched" class="error-message">
+      University Name is required.
+    </div>
+    <div *ngIf="universityForm.get('nomUniversity')?.hasError('minlength') && universityForm.get('nomUniversity')?.touched" class="error-message">
+      Minimum length is 3 characters.
+    </div>
+    <div *ngIf="universityForm.get('nomUniversity')?.hasError('maxlength') && universityForm.get('nomUniversity')?.touched" class="error-message">
+      Maximum length is 15 characters.
+    </div>
+    <div *ngIf="universityForm.get('nomUniversity')?.hasError('pattern') && universityForm.get('nomUniversity')?.touched" class="error-message">
+      Alphabets and spaces only.
+    </div>
+  </div>
+
+  <!-- University Address -->
+  <div class="formfield" id="adressefield">
+    <label for="adresse">University Address</label>
+    <input type="text" formControlName="adresse" />
+    <div *ngIf="universityForm.get('adresse')?.hasError('required') && universityForm.get('adresse')?.touched" class="error-message">
+      University Address is required.
+    </div>
+    <div *ngIf="universityForm.get('adresse')?.hasError('minlength') && universityForm.get('adresse')?.touched" class="error-message">
+      Minimum length is 4 characters.
+    </div>
+  </div>
+
+  <!-- Foyer -->
+  <div class="formfield" id="foyerfield">
+    <label for="foyer">Foyer</label>
+    <select formControlName="foyer">
+      <option *ngFor="let foyer of foyers" [ngValue]="foyer">{{ foyer.nomFoyer }}</option>
+    </select>
+
+  </div>
+
+  <button type="submit" [disabled]="universityForm.invalid">Save</button>
+</form>

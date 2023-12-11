@@ -8,7 +8,7 @@ import { Chambre } from '../models/chambre.model';
   providedIn: 'root',
 })
 export class ChambreService {
-  private apiUrl = 'http://localhost:8051/chambre';   // Replace with your API endpoint
+  private apiUrl = 'http://localhost:8081/springProjectTwin2/chambre';   // Replace with your API endpoint
 
   constructor(private http: HttpClient) {}
 
@@ -25,7 +25,7 @@ export class ChambreService {
   }
 
   updateChambre( chambre: Chambre): Observable<any> {
-    const url = `http://localhost:8051/chambre/modify`;
+    const url = `http://localhost:8081/springProjectTwin2/chambre/modify`;
     return this.http.put(url, chambre);
   }
 

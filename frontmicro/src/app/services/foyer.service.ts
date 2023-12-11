@@ -35,4 +35,7 @@ export class FoyerService {
     const url = `${this.apiUrl}/search/${nom}`;
     return this.http.get<Foyer[]>(url);
   }
+  getAllFoyers(): Observable<Foyer[]> {
+    return this.http.get<Foyer[]>(`${this.apiUrl}/getAll`);
+  }
 }

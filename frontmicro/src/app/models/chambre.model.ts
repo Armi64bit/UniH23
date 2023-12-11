@@ -5,7 +5,7 @@ export interface Chambre {
     numeroChambre: number;
     typeC: TypeChambre;
     reservations: any[]; // Replace with the actual type of reservations if available
-
+    bloc: Bloc; // This should be of type Bloc, not an object literal
   }
 
 export enum TypeChambre {
@@ -14,4 +14,6 @@ export enum TypeChambre {
   TRIPLE = 'TRIPLE',
 }
 
-
+export interface Reservation {
+  // Define reservation properties if needed
+}

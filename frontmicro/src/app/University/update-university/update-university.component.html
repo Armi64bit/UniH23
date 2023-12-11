@@ -1,0 +1,54 @@
+<form #universityForm="ngForm" (ngSubmit)="updateUn()">
+  <div class="container">
+    <div id="formtitle">Update University</div>
+
+    <div class="formfield" id="nomUniversityfield">
+      <label for="nomUniversity">University Name</label>
+      <input
+        type="text"
+        name="nomUniversity"
+        id="nomUniversity"
+        [(ngModel)]="university.nomUniversity"
+        required
+        minlength="3"
+      />
+      <div
+        *ngIf="universityForm.controls['nomUniversity'].invalid && (universityForm.controls['nomUniversity'].dirty || universityForm.controls['nomUniversity'].touched)"
+        class="error-message"
+      >
+        <div *ngIf="universityForm.controls['nomUniversity'].errors?.['required']">University Name is required.</div>
+        <div *ngIf="universityForm.controls['nomUniversity'].errors?.['minlength']">Minimum length is 3 characters.</div>
+      </div>
+    </div>
+
+    <div class="formfield" id="adresse">
+      <label for="adresse">University Address</label>
+      <input
+        type="text"
+        name="adresse"
+        id="adresse"
+        [(ngModel)]="university.adresse"
+        required
+        minlength="3"
+      />
+      <div
+        *ngIf="universityForm.controls['adresse'].invalid && (universityForm.controls['adresse'].dirty || universityForm.controls['adresse'].touched)"
+        class="error-message"
+      >
+        <div *ngIf="universityForm.controls['adresse'].errors?.['required']">University Address is required.</div>
+        <div *ngIf="universityForm.controls['adresse'].errors?.['minlength']">Minimum length is 3 characters.</div>
+      </div>
+    </div>
+
+    
+    <div class="formfield" id="foyerfield">
+      <label for="foyer">Foyer</label>
+      <select name="foyer" id="foyer" [(ngModel)]="university.foyer" required>
+        <option *ngFor="let foyer of foyers" [ngValue]="foyer">{{ foyer.nomFoyer }}</option>
+      </select>
+    </div>
+  
+
+    <button class="update-button" type="submit" [disabled]="universityForm.invalid">Update</button>
+  </div>
+</form>

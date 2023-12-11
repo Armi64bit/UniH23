@@ -43,6 +43,8 @@
             <th>ID</th>
             <th>Num Chambre</th>
             <th>Type</th>
+            <th>Bloc id</th>
+            <th>Bloc name</th>
             <th>Delete</th>
             <th>Update</th>
           </tr>
@@ -53,11 +55,35 @@
               <td>{{ e.idChambre }}</td>
               <td>{{ e.numeroChambre }}</td>
               <td>{{ e.typeC }}</td>
-
+              <td>{{ e.bloc?.idBloc }}</td>
+              <td><div class="col-8  btn btn-success" (click)="OpenModel()">{{ e.bloc?.nomBloc }} </div></td>
               <td><button class="col-8 btn btn-danger" (click)="deleteStudent(e)">Delete</button></td>
               <td><button class="col-8 btn btn-info update-button" (click)="navigateToUpdate(e)">Update</button></td>
 
-
+              <div class="border-white modal dark-mode" id="myModal">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="border-white  modal-content bg-dark text-white">
+                    <div class="modal-header">
+                      <h4 class="modal-title">Bloc Information</h4>
+                      <button type="button" class="btn-close text-white" (click)="CloseModel()" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                      <!-- Display information from the Bloc interface -->
+                      <p class="mb-2"><strong>ID:</strong> {{ e.bloc.idBloc }}</p>
+                      <p class="mb-2"><strong>Name:</strong> {{ e.bloc.nomBloc }}</p>
+                      <p class="mb-2"><strong>Capacity:</strong> {{ e.bloc.capacityBloc }}</p>
+                      <!-- Uncomment the following lines if you have imported and want to display Foyer and Chambre information -->
+                      <!--
+                      <p>Foyer: {{ bloc.foyer.someProperty }}</p>
+                      <p>Chambres: {{ bloc.chambres.map(chambre => chambre.someProperty).join(', ') }}</p>
+                      -->
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" (click)="CloseModel()" data-bs-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </tr>
 
             <!-- ... Additional code for the modal ... -->

@@ -74,10 +74,34 @@
                     <!-- Other Links with Icons -->
 
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="/university">
-                            <i class="fa fa-university"></i> University
-                        </a>
-                    </li>
+                      <a class="nav-link" routerLink="/university/getAll" (click)="togglech()">
+                          <i class="fa fa-university"></i> University
+                      </a>
+                      <div *ngIf="showchOptions">
+                          <ul class="nav flex-column ml-3">
+                              <li class="nav-item">
+                                  <a class="nav-link" routerLink="/university/getAll">
+                                      <i class="fa fa-map-marker"></i> All Universities
+                                  </a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="nav-link" routerLink="/university/addUniversity">
+                                      <i class="fa fa-plus"></i> Add University
+                                  </a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="nav-link" routerLink="/university/details">
+                                      <i class="fa fa-info-circle"></i> Details University
+                                  </a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="nav-link" routerLink="/University/statistics">
+                                  <i class="fa fa-chart-bar"></i> Uni Statistics
+                                  </a>
+                              </li>
+                          </ul>
+                      </div>
+                  </li>
                     <li class="nav-item">
                         <a class="nav-link" routerLink="/reservations">
                             <i class="fa fa-calendar-alt"></i> Reservations

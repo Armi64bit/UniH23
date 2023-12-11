@@ -1,0 +1,113 @@
+<!-- Add the following link to include Bootstrap CSS (dark mode) -->
+<!-- <link href="path/to/bootstrap-dark.min.css" rel="stylesheet"> -->
+<!-- The rest of your existing HTML code -->
+<div class="bg-dark" >
+    <div class="container">
+    <!-- <div class="search-bar bg-dark dark-mode" >
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text bg-dark text-white">
+                    <i class="fas fa-search"></i>
+                  </span>
+                </div>
+                <input class="form-control bg-dark dark-mode text-white" type="text" placeholder="Search" >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>-->  
+    </div>
+  
+    <h1 class="text-white font-italic shining-title university-title">University Section</h1>
+    <div class="mb-3" style="width: 600px;"> <!-- Adjust the width as per your requirement -->
+      <!-- <label for="adresse" style="color: white;">Recherche par adresse:</label> --> 
+      <div class="input-group">
+        <input type="text" id="adresse" class="form-control" [(ngModel)]="adresseRecherchee" placeholder="Search..." />
+        <div class="input-group-append">
+          <button class="btn btn-success rounded" (click)="rechercherParAdresse()" style="border-radius: 15px;">
+            <i class="fas fa-search text-white"></i> 
+          </button>
+          <span style="margin-right: 10px;"></span> 
+          <button class="btn btn-warning rounded" (click)="annulerRecherche()" style="border-radius: 15px;">Annuler</button>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary" (click)="downloadAsPDF()">
+      <i class="fas fa-file-pdf"></i> Download as PDF
+    </button>&nbsp;
+    <button class="btn btn-secondary" (click)="downloadAsCSV()">
+      <i class="fas fa-file-csv"></i> Export as CSV
+    </button>
+  <br><br>
+<div *ngIf="noResults; else universityTable" class="text-white">
+    <!-- Display your 404 animation or message here -->
+    404
+    <p>No results found.</p>
+  </div>
+  
+  <ng-template #universityTable>
+    <div>
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>University Name</th>
+            <th>University Address</th>
+            <th>Foyer</th>
+            <th>Actions</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let u of universities | paginate: { itemsPerPage: 4, currentPage: page, totalItems: totalItems }">
+            <tr>
+              <td>{{ u.idUniversity }}</td>
+              <td>{{ u.nomUniversity }}</td>
+              <td>{{ u.adresse }}</td>
+              <td [ngClass]="{ 'foyer-button': true, 'text-center': true, 'custom-margin-top': true }">
+                {{ u.foyer?.nomFoyer || 'N/A' }}
+              </td>
+              <td><button class="btn btn-danger" (click)="deleteUniversity(u)">Delete</button></td>
+              <td><button class="btn btn-info update-button" (click)="updateUniversity(u.idUniversity)">Update</button></td>
+              <td>
+                <button class="btn btn-primary" (click)="openDetailsModal(content, u)">View Details</button>
+              </td>      
+            </ng-container>
+        </tbody>
+      </table>
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+  </ng-template>
+  <!-- Add modal content -->
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" style="color: blue; font-weight: bold; font-style: italic;">" {{ selectedUniversity?.nomUniversity }} " Details</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+   <!--
+    <p style="font-weight: bold;">
+        <span style="color: blue;">University Name:</span> {{ selectedUniversity?.nomUniversity }}
+      </p>
+      <p style="font-weight: bold; ">
+        <span style="color: blue;">University Address:</span> {{ selectedUniversity?.adresse }}
+      </p>
+      <p style="font-weight: bold; ">
+        <span style="color: blue;">Foyer Name:</span> {{ selectedUniversity?.foyer?.nomFoyer || 'N/A' }}
+      </p>
+  -->   
+  <app-uni-table-details [university]="selectedUniversity" (closeDetailsEvent)="modal.dismiss('Close click')"></app-uni-table-details>
+
+    </div>
+  <!-- <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="modal.dismiss('Close click')">Close</button>
+    </div>--> 
+  </ng-template>
+  </div>
+  

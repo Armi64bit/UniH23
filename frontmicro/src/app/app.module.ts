@@ -9,10 +9,6 @@ import { AlletudiantComponent } from './Etudiant/components/alletudiant/alletudi
 import { UpdateetudiantComponent } from './Etudiant/components/updateetudiant/updateetudiant.component';
 import { DeleteetudiantComponent } from './Etudiant/components/deleteetudiant/deleteetudiant.component';
 import { AddetudiantComponent } from './Etudiant/components/addetudiant/addetudiant.component';
-import { AddChambreComponent } from './Chambre/components/add-chambre/add-chambre.component';
-import { AllChambreComponent } from './Chambre/components/all-chambre/all-chambre.component';
-import { DeleteChambreComponent } from './Chambre/components/delete-chambre/delete-chambre.component';
-import { UpdateChambreComponent } from './Chambre/components/update-chambre/update-chambre.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 import { FoyerModule } from './foyer/foyer.module';
@@ -20,12 +16,17 @@ import { EtudiantModule } from './Etudiant/etudiant.module';
 import { StatisticetudiantComponent } from './Etudiant/components/statisticetudiant/statisticetudiant.component';
 import { HighlightDirective } from './highlight.directive';
 import { PointerHandDirective } from './pointer-hand.directive';
+import { UniversityModule } from './University/university.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UniversityStatisticsComponent } from './University/university-statistics/university-statistics.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
     AppComponent,
     StatisticetudiantComponent,
-   
+    UniversityStatisticsComponent,
+    HighlightDirective,
 
 
 
@@ -43,7 +44,13 @@ import { PointerHandDirective } from './pointer-hand.directive';
     ModalModule.forRoot(),// Ensure FormsModule is here
     ReactiveFormsModule,
     FoyerModule,
-    EtudiantModule
+    EtudiantModule,
+    UniversityModule,
+    NgbModule,
+    NgxPaginationModule,
+
+
+
   ],
   providers: [BsModalService],
   bootstrap: [AppComponent]

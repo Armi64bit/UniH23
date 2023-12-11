@@ -16,7 +16,12 @@
       </select>
     </div>
 
-
+    <div class="formfield" id="schoolfield">
+      <label for="bloc">Bloc</label>
+      <select class="text-white dark-mode bg-dark" name="bloc" id="bloc" [(ngModel)]="chambre.bloc.idBloc" required>
+        <option *ngFor="let bloc of blocs" [ngValue]="bloc.idBloc">{{ bloc.nomBloc }}</option>
+      </select>
+    </div>
 
     <button class="update-button" type="submit" [disabled]="updating">
       <span >Update</span>

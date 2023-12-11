@@ -2,6 +2,16 @@
   <div class="dark-mode bg-dark text-white container">
     <div id="formtitle">Add Student</div>
 
+    <div class="formfield" id="blocfield" [ngClass]="{
+      'empty': !chambre.bloc.idBloc,
+      'valid': chambre.bloc.idBloc
+    }">
+      <label for="bloc">Bloc</label>
+      <select class="dark-mode bg-dark text-white" name="bloc" id="bloc" [(ngModel)]="chambre.bloc.idBloc" required>
+        <option *ngFor="let bloc of blocs" [ngValue]="bloc.idBloc">{{ bloc.nomBloc }}</option>
+      </select>
+      <div *ngIf="!chambre.bloc.idBloc" class="message">Bloc is required</div>
+    </div>
 
     <div class="formfield" id="firstnamefield">
       <label for="prenomEtudiant">num chambre</label>
