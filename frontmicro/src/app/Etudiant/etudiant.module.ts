@@ -6,6 +6,8 @@ import { AddetudiantComponent } from './components/addetudiant/addetudiant.compo
 import { AlletudiantComponent } from './components/alletudiant/alletudiant.component';
 import { UpdateetudiantComponent } from './components/updateetudiant/updateetudiant.component';
 import { ReservationModalComponent } from './components/reservation-modal/reservation-modal.component';
+import { HighlightDirective } from '../highlight.directive';
+import { PointerHandDirective } from '../pointer-hand.directive';
 
 
 
@@ -14,7 +16,10 @@ import { ReservationModalComponent } from './components/reservation-modal/reserv
 AddetudiantComponent,
 AlletudiantComponent,
 UpdateetudiantComponent,
-ReservationModalComponent
+ReservationModalComponent,
+HighlightDirective,
+PointerHandDirective,
+
 
   ],
   imports: [

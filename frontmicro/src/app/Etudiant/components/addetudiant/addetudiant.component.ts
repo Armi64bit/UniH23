@@ -39,7 +39,7 @@ export class AddetudiantComponent {
       (response: any) => {
         console.log('Student added successfully', response);
         // Redirect to '/students/all' after successful addition
-        this.router.navigate(['/students/all']);
+        this.router.navigate(['/students/add']);
       },
       (error: any) => {
         console.error('Error adding student', error);

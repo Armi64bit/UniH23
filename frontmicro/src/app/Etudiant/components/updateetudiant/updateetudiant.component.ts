@@ -47,7 +47,7 @@ updateStudent(): void {
   this.etudiantService.updateStudent(this.student).subscribe(
     response => {
       // Handle the response
-      this.router.navigate(['/students/all']);
+      this.router.navigate(['/students/add']);
     },
     error => {
       // Handle errors

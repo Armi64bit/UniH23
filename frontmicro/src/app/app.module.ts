@@ -18,11 +18,15 @@ import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 import { FoyerModule } from './foyer/foyer.module';
 import { EtudiantModule } from './Etudiant/etudiant.module';
 import { StatisticetudiantComponent } from './Etudiant/components/statisticetudiant/statisticetudiant.component';
+import { HighlightDirective } from './highlight.directive';
+import { PointerHandDirective } from './pointer-hand.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     StatisticetudiantComponent,
+   
+
 
 
 
