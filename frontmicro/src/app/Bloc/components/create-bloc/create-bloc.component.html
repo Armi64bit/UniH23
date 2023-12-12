@@ -1,21 +1,26 @@
 <!-- create-bloc.component.html -->
 <form [formGroup]="blocForm" (ngSubmit)="addBloc()">
-  <div>
+<div class="dark-mode bg-dark text-white container">
+  <div id="formtitle">Add Bloc</div>
+
+  <div class="formfield">
       <label for="nomBloc">Nom du Bloc:</label>
-      <input type="text" formControlName="nomBloc" required>
+      <input class="dark-mode bg-dark text-white" type="text" formControlName="nomBloc" required>
   </div>
 
-  <div>
+  <div class="formfield">
       <label for="capacityBloc">Capacité du Bloc:</label>
-      <input type="number" formControlName="capacityBloc" required>
+      <input class="dark-mode bg-dark text-white" type="number" formControlName="capacityBloc" required>
   </div>
 
-  <div>
+  <div class="formfield">
       <label for="foyerId">Foyer:</label>
-      <select formControlName="foyerId" required>
+      <select class="dark-mode bg-dark text-white" formControlName="foyerId" required>
           <option *ngFor="let foyer of foyers" [value]="foyer.idFoyer">{{ foyer.nomFoyer }}</option>
       </select>
   </div>
 
   <button type="submit" [disabled]="blocForm.invalid">Ajouter le Bloc</button>
+</div>
+
 </form>
