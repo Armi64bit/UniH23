@@ -14,16 +14,22 @@ export class UniversityDetailsComponent {
     nomUniversity: '',
     adresse: '',
     foyer: {
-      idFoyer: 0,
+      idFoyer: 0,  // Provide a default value for idFoyer, or modify as needed
       nomFoyer: '',
-      capaciteFoyer: 0
+      capaciteFoyer: 0,
+      blocList: [],
+      universite: {
+          idUniversite: 0,  // Provide a default value for idUniversite, or modify as needed
+          nomUniversite: '',
+          adresse: ''
+      }
     }
   };
-  
+
   nombreTotalChambres : number = 0 ;
   nombreMinChambres : number = 0 ;
   universites !: University[];
-  
+
   constructor(private universityService: UniversityService,  private router: Router) {}
 
 
@@ -40,7 +46,7 @@ export class UniversityDetailsComponent {
           console.error('Une erreur s\'est produite : ', error);
         }
       );
-      
+
     } else if(this.universityDetails.nomUniversity){
 
       this.universityService.getUniversByNomUnivers(this.universityDetails.nomUniversity).subscribe(
@@ -52,14 +58,14 @@ export class UniversityDetailsComponent {
           console.error('Une erreur s\'est produite : ', error);
         }
       );
-      
+
     } else if (this.universityDetails.foyer?.nomFoyer) {
       this.universityService.getUniversByNomFoyer(this.universityDetails.foyer.nomFoyer).subscribe(
         (data: University) => {
-          
+
           this.universityDetails.adresse = data.adresse;
           this.universityDetails.nomUniversity = data.nomUniversity;
-          
+
         },
         (error) => {
           console.error('Une erreur s\'est produite : ', error);

@@ -1,32 +1,43 @@
-<h1 class="text-white fadeIn">Foyer</h1>
-<div class="bg-dark">
-  <!-- ... Other HTML code ... -->
-</div>
+<!-- foyer-list.component.html -->
 
-<div class="fadeIn">
-  <!-- Display the table when not loading -->
-  <table class="text-capitalize fade show delay-2s table table-dark table-hover">
-    <!-- Add 'table-dark' class for dark mode -->
-    <thead>
-      <tr>
-        <th>Nom Foyer</th>
-        <th>Capacite Foyer</th>
-        <th>Delete</th>
-        <th>Update</th>
-      </tr>
-    </thead>
-    <tbody>
-      <ng-container *ngFor="let foyer of foyers">
+<div class="container mt-4">
+    <div class="row">
+      <div class="col-md-6">
+        <label for="capacity">Enter Capacity:</label>
+        <input
+          type="number"
+          class="form-control"
+          id="capacity"
+          [(ngModel)]="capacity"
+        />
+      </div>
+      <div class="col-md-6">
+        <button
+          class="btn btn-primary"
+          (click)="retrieveFoyersByCapacity()"
+        >
+          Retrieve
+        </button>
+      </div>
+    </div>
+  
+    <table class="table mt-4">
+      <thead>
         <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Capacity</th>
+          <!-- Add other table headers as needed -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let foyer of foyers">
+          <td>{{ foyer.idFoyer }}</td>
           <td>{{ foyer.nomFoyer }}</td>
           <td>{{ foyer.capaciteFoyer }}</td>
-          <td><button class="col-8 btn btn-danger" (click)="deleteFoyer(foyer)">Delete</button></td>
-          <td><button class="col-8 btn btn-info update-button" (click)="navigateToUpdate(foyer)">Update</button></td>
+          <!-- Add other table cells as needed -->
         </tr>
-
-        <!-- ... Additional code for the modal ... -->
-
-      </ng-container>
-    </tbody>
-  </table>
-</div>
+      </tbody>
+    </table>
+  </div>
+  

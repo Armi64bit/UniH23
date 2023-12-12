@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateFoyerComponent } from './foyer-add.component';
+import { DeleteFoyerComponent } from './delete-foyer.component';
 
-describe('FoyerAddComponent', () => {
-  let component: CreateFoyerComponent;
-  let fixture: ComponentFixture<CreateFoyerComponent>;
+describe('DeleteFoyerComponent', () => {
+  let component: DeleteFoyerComponent;
+  let fixture: ComponentFixture<DeleteFoyerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreateFoyerComponent ]
+      declarations: [ DeleteFoyerComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CreateFoyerComponent);
+    fixture = TestBed.createComponent(DeleteFoyerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

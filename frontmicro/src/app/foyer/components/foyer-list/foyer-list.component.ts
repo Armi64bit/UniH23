@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { Foyer } from 'src/app/models/foyer.model';
 import { FoyerService } from 'src/app/services/foyer.service';
 
@@ -9,45 +8,21 @@ import { FoyerService } from 'src/app/services/foyer.service';
   styleUrls: ['./foyer-list.component.css']
 })
 export class FoyerListComponent {
+  capacity: number = 0; // or any default value that makes sense
+  foyers: Foyer[] = [];
 
-    foyers: any[] = []; // Initialize the array in the constructor to avoid TS2564 error
-
-    constructor(private router: Router, private foyerService: FoyerService) { }
-
-    ngOnInit(): void {
-      this.loadFoyers();
-    }
-
-    navigateToUpdate(foyer: Foyer): void {
-      this.router.navigate(['/foyer/update', foyer.idFoyer]);
-    }
-
-    deleteFoyer(foyer: Foyer): void {
-      const isConfirmed = confirm('Are you sure you want to delete this foyer?');
-      if (isConfirmed) {
-        this.foyerService.deleteFoyer(foyer.idFoyer).subscribe(
-          response => {
-            // Remove the deleted foyer from the foyers array
-            this.foyers = this.foyers.filter(e => e.idFoyer !== foyer.idFoyer);
-            // Optionally, display a success message
-          },
-          error => {
-            // Handle error
-          }
-        );
+  constructor(private foyerService: FoyerService) {}
+  
+  retrieveFoyersByCapacity(): void {
+    this.foyerService.getFoyersByCapacity(this.capacity).subscribe(
+      (data) => {
+        this.foyers = data;
+      },
+      (error) => {
+        console.error('Error fetching foyers', error);
       }
-    }
-
-    loadFoyers() {
-      this.foyerService.getFoyers().subscribe(
-        data => {
-          this.foyers = data;
-        },
-        error => {
-          console.error('An error occurred while fetching foyers:', error);
-        }
-      );
-    }
+    );
   }
 
 
+}

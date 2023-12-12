@@ -19,9 +19,15 @@ export class AddUniversityComponent {
     nomUniversity: '',
     adresse: '',
     foyer: {
-      idFoyer: 0,
-      nomFoyer: '',
-      capaciteFoyer: 0,
+       idFoyer: 0,  // Provide a default value for idFoyer, or modify as needed
+    nomFoyer: '',
+    capaciteFoyer: 0,
+    blocList: [],
+    universite: {
+        idUniversite: 0,  // Provide a default value for idUniversite, or modify as needed
+        nomUniversite: '',
+        adresse: ''
+    }
     }
   };
   foyers: Foyer[]=[]

@@ -15,27 +15,28 @@ export class FoyerService {
     return this.http.get<Foyer[]>(`${this.apiUrl}/all`);
   }
 
-  getFoyer(id: number): Observable<Foyer> {
-    return this.http.get<Foyer>(`${this.apiUrl}/retrieve/${id}`);
-  }
-
-  createFoyer(chambre: Foyer): Observable<Foyer> {
-    return this.http.post<Foyer>(`${this.apiUrl}/add`, chambre);
-  }
-
-  updateFoyer( chambre: Foyer): Observable<any> {
-    const url = `http://localhost:8081/springProjectTwin2/foyer/modify`;
-    return this.http.put(url, chambre);
-  }
-
-  deleteFoyer(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/remove/${id}`);
-  }
-  searchFoyer(nom: string): Observable<Foyer[]> {
-    const url = `${this.apiUrl}/search/${nom}`;
-    return this.http.get<Foyer[]>(url);
-  }
   getAllFoyers(): Observable<Foyer[]> {
-    return this.http.get<Foyer[]>(`${this.apiUrl}/getAll`);
+    const apiUrl = `${this.apiUrl}/all`;
+    return this.http.get<Foyer[]>(apiUrl);
   }
+
+  addFoyer(foyer: Foyer, headers: any): Observable<Foyer> {
+    const apiUrl = `${this.apiUrl}/add`;
+    return this.http.post<Foyer>(apiUrl, foyer, { headers: headers });
+  }
+
+  editFoyer(foyer: Foyer): Observable<Foyer> {
+    const apiUrl = `${this.apiUrl}/modify`;
+    return this.http.put<Foyer>(apiUrl, foyer);
+  }
+
+  deleteFoyer(foyerId: number): Observable<void> {
+    const apiUrl = `${this.apiUrl}/remove/${foyerId}`;
+    return this.http.delete<void>(apiUrl);
+  }
+
+  getFoyersByCapacity(capacity: number): Observable<Foyer[]> {
+    return this.http.get<Foyer[]>(`${this.apiUrl}/capacity/${capacity}`);
+  }
+
 }

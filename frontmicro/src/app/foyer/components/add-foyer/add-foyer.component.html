@@ -1,0 +1,27 @@
+<!-- add-foyer.component.html -->
+<!--a reactive form -> disabled button until the capacity is between 0 & 1000 -->
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add Foyer</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  
+  <div class="modal-body">
+    <form [formGroup]="foyerForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nomFoyer">Nom</label>
+        <input id="nomFoyer" name="nomFoyer" class="form-control" formControlName="nomFoyer" required>
+      </div>
+      <div class="form-group">
+        <label for="capaciteFoyer">Capacité</label>
+        <input id="capaciteFoyer" name="capaciteFoyer" class="form-control" formControlName="capaciteFoyer" required>
+      </div>
+  
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" [disabled]="foyerForm.invalid">Add Foyer</button>
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Close click')">Cancel</button>
+      </div>
+    </form>
+  </div>
+  

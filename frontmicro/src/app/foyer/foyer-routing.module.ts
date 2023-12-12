@@ -3,13 +3,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FoyerListComponent } from './components/foyer-list/foyer-list.component';
-import { FoyerUpdateComponent } from './components/foyer-update/foyer-update.component';
-import { CreateFoyerComponent } from './components/foyer-add/foyer-add.component';
+import { AddFoyerComponent } from './components/add-foyer/add-foyer.component';
+import { UpdateFoyerComponent } from './components/update-foyer/update-foyer.component';
 
 const routes: Routes = [
   { path: 'all', component: FoyerListComponent },
-  { path: 'add', component: CreateFoyerComponent },
-  { path: 'update/:id', component: FoyerUpdateComponent },
+  { path: 'add', component: AddFoyerComponent },
+  { path: 'update/:id', component: UpdateFoyerComponent },
   // Add more routes as needed
 ];
 

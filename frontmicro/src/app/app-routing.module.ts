@@ -7,7 +7,7 @@ const routes: Routes = [
 
   { path: 'chambre', loadChildren: () => import('./Chambre/chambre.module').then(m => m.ChambreModule) },
   { path: 'bloc', loadChildren: () => import('./Bloc/components/Bloc.module').then(m => m.ComponentsModule) },
-  { path: 'foyer', loadChildren: () => import('./foyer/foyer.module').then(m => m.FoyerModule) },
+  { path: 'foyer', loadChildren: () => import('./foyer/components/components.module').then(m => m.ComponentsModule) },
   { path: 'students', loadChildren: () => import('./Etudiant/etudiant.module').then(m => m.EtudiantModule) },
   {
     path: 'university',

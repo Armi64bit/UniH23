@@ -11,7 +11,6 @@ import { DeleteetudiantComponent } from './Etudiant/components/deleteetudiant/de
 import { AddetudiantComponent } from './Etudiant/components/addetudiant/addetudiant.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
-import { FoyerModule } from './foyer/foyer.module';
 import { EtudiantModule } from './Etudiant/etudiant.module';
 import { StatisticetudiantComponent } from './Etudiant/components/statisticetudiant/statisticetudiant.component';
 import { HighlightDirective } from './highlight.directive';
@@ -21,6 +20,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UniversityStatisticsComponent } from './University/university-statistics/university-statistics.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ReservationModule } from './Reservations/reservation.module';
+import { FoyerModule } from './foyer/foyer.module';
 
 @NgModule({
   declarations: [

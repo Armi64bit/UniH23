@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FoyerUpdateComponent } from './foyer-update.component';
+import { DetailsFoyerComponent } from './details-foyer.component';
 
-describe('FoyerUpdateComponent', () => {
-  let component: FoyerUpdateComponent;
-  let fixture: ComponentFixture<FoyerUpdateComponent>;
+describe('DetailsFoyerComponent', () => {
+  let component: DetailsFoyerComponent;
+  let fixture: ComponentFixture<DetailsFoyerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FoyerUpdateComponent ]
+      declarations: [ DetailsFoyerComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(FoyerUpdateComponent);
+    fixture = TestBed.createComponent(DetailsFoyerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,36 @@
+<!-- details-foyer.component.html -->
+
+<div class="modal-header">
+    <h4 class="modal-title">{{ selectedFoyer?.nomFoyer }} Details</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  
+  <div class="modal-body">
+    <form>
+     <!-- Foyer Name -->
+  <div class="form-group">
+    <label for="nomFoyer1">Name:</label>
+    <input id="nomFoyer1" name="nomFoyer" class="form-control" [value]="selectedFoyer?.nomFoyer" readonly>
+  </div>
+  
+  <!-- Foyer Capacity -->
+  <div class="form-group">
+    <label for="capaciteFoyer1">Capacity:</label>
+    <input id="capaciteFoyer1" name="capaciteFoyer" class="form-control" [value]="selectedFoyer?.capaciteFoyer" readonly>
+  </div>
+  
+  <!-- List of Blocks 
+  <div class="form-group">
+    <label for="blocs1">Blocks:</label>
+    <li *ngFor="let bloc of selectedFoyer?.blocList">{{ bloc.nomBloc }}</li>
+   </div>
+  -->
+    </form>
+  </div>
+  
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="close()">Close</button>
+  </div>
+  
