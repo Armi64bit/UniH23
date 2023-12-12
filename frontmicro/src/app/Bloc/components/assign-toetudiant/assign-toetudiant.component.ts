@@ -4,6 +4,7 @@ import { Etudiant } from 'src/app/models/etudiant.model';
 import { BlocServiceService } from 'src/app/services/bloc-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
+import { EtudiantService } from 'src/app/services/etudiant.service';
 
 @Component({
   selector: 'app-assign-toetudiant',
@@ -20,7 +21,8 @@ export class AssignToetudiantComponent implements OnInit {
 
   constructor(
     private blocService: BlocServiceService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private es:EtudiantService
   ) {}
 
   ngOnInit(): void {
@@ -29,7 +31,7 @@ export class AssignToetudiantComponent implements OnInit {
   }
 
   loadEtudiants() {
-    this.etudiants$ = this.blocService.getAllEtudiants();
+    this.etudiants$ = this.es.getEtudiants();
   }
 
   loadBlocs() {

@@ -31,15 +31,16 @@ export class BlocServiceService {
   getChambre(id: number): Observable<Bloc> {
     return this.http.get<Bloc>(`${this.baseUrl}/retrieve/${id}`);
   }
-  assignStudentToBloc(idEtudiant: number, idBloc: number): Observable<any> {
-    const url = this.baseUrl + '/' + idBloc + '/assignStudent/' + idEtudiant;
 
-     return this.http.post(url, null)  // null pour le corps de la requête, car c'est une requête POST sans corps
-
-       }
        getAllEtudiants(): Observable<Etudiant[]> {
         return this.http.get<Etudiant[]>(this.baseUrl);
       }
+      assignStudentToBloc(idEtudiant: number, idBloc: number): Observable<any> {
+        console.log("id et houni "+idEtudiant);
+        const x:Number=idEtudiant;
+       const url = this.baseUrl + '/' + idBloc + '/assignStudent/' + x;
 
+        return this.http.post(url, null) ; // null pour le corps de la requête, car c'est une requête POST sans corps
+      }
 
 }
