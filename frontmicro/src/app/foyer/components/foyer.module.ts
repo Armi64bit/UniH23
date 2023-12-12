@@ -25,7 +25,6 @@ import { FoyerChangeDirective } from './foyer-change.directive';
     FoyerListComponent,
     FoyerChangeDirective
 
-
   ],
   imports: [
     CommonModule,

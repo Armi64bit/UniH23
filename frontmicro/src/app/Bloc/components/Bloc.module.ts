@@ -7,6 +7,7 @@ import { blocRoutingModule } from './bloc-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AssignToetudiantComponent } from './assign-toetudiant/assign-toetudiant.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BlocDirDirective } from './bloc-dir.directive';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     CreateBlocComponent,
     ModifyBlocComponent,
     AssignToetudiantComponent,
+    BlocDirDirective,
 
   ],
   imports: [
