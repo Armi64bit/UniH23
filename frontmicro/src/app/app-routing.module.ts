@@ -14,6 +14,10 @@ const routes: Routes = [
     loadChildren: () => import('./University/university.module').then(m => m.UniversityModule),
   },
   { path: 'University/statistics', component: UniversityStatisticsComponent },
+  {
+    path: '',
+    loadChildren: () => import('./Reservations/reservation.module').then(m => m.ReservationModule),
+  },
   // ... other routes ...
 ];
 

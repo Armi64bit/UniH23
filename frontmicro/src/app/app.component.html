@@ -102,11 +102,25 @@
                           </ul>
                       </div>
                   </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/reservations">
-                            <i class="fa fa-calendar-alt"></i> Reservations
-                        </a>
-                    </li>
+                  <li class="nav-item">
+                    <a class="nav-link" (click)="togglef()">
+                        <i class="fa fa-user"></i> reservation
+                    </a>
+                    <div *ngIf="showfoOptions">
+                        <ul class="nav flex-column ml-3">
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink="/back">
+                                    <i class="fa fa-users"></i> All reservation
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" routerLink="/front">
+                                  <i class="fa fa-users"></i> front reservation
+                              </a>
+                          </li>
+                        </ul>
+                    </div>
+                </li>
                     <li class="nav-item">
                       <a class="nav-link" (click)="togglef()">
                           <i class="fa fa-user"></i> Foyer

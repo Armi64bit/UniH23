@@ -1,13 +1,14 @@
-<div class="search-bar">
+<div class="search-bar bg-dark dark-mode" [@searchAnimation]="searchQuery">
   <!-- Single input field for search with (input) event binding -->
-  <input type="text" placeholder="Search" [(ngModel)]="searchQuery" (input)="onAdvancedSearch()">
+  <input type="text" placeholder="Search" [(ngModel)]="searchQuery" (input)="onAdvancedSearch()" class="form-control bg-dark dark-mode text-white">
 </div>
 
-<h1>Students</h1>
+<h1 class="text-white fadeIn">Students</h1>
 
 <div>
   <!-- The existing table rendering logic, with modification for displaying search results -->
-  <table class="fixed_headers">
+  <table class="text-capitalize fade show delay-2s table table-dark table-hover">
+    <!-- Add 'table-dark' class for dark mode -->
     <thead>
       <tr>
         <th>ID</th>
@@ -33,8 +34,8 @@
           <td>{{ e.dateNaissance | date: 'yyyy-MM-dd' }}</td>
           <td>{{ studentAges[e.idEtudiant] }}</td> <!-- Display Age -->
           <td><button class="res-button"  (click)="openModals(e.idEtudiant)">Reservation</button></td>
-          <td><button (click)="deleteStudent(e)">Delete</button></td>
-          <td><button class="update-button" (click)="navigateToUpdate(e)">Update</button></td>
+          <td><button class="col-8 btn btn-danger" (click)="deleteStudent(e)">Delete</button></td>
+          <td><button class="col-8 btn btn-info update-button" (click)="navigateToUpdate(e)">Update</button></td>
         </tr>
       </ng-container>
     </tbody>

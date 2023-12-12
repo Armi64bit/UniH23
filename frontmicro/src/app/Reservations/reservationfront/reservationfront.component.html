@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>How To create Bootstrap 4 Registration Form Template HTML</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="register-form mt-3 mb-3">
+    <div class="container">
+          <div class="row">
+            <div class="col-md-6 d-none d-md-block bg-warning">
+                <h1 class="text-center pt-3">Voulez-vous<br> reserver ?</h1>
+            </div>
+            <div class="col-md-6 bg-dark">
+              <form (ngSubmit)="submitForm()" class="p-4 text-white">
+                <div class="form-group">
+                  <label for="Date Reseration :"><i class="fas fa-user"></i> Date Réservation :</label>
+                  <!-- Ajoutez l'attribut 'name' pour résoudre l'erreur NG01352 -->
+                  <input type="date" class="form-control" name="anneeUniversitaire" [(ngModel)]="newRequest3.annerUniversitaire">
+                </div>
+                <div class="mb-3" *ngIf="leschambres && leschambres.length > 0">
+                  <label for="numeroChambre">Choose a chambre:</label>
+                  <select id="numeroChambre" name="numeroChambre" [(ngModel)]="selectedNumeroChambre">
+                      <option *ngFor="let c of leschambres" [value]="c.numeroChambre">{{ c.numeroChambre }}</option>
+                  </select>
+              </div>
+              <div *ngIf="!leschambres || leschambres.length === 0">Aucune chambre disponible.</div>
+
+
+
+       <button type="submit" class="btn btn-warning mb-3 mt-3 float-right">Register</button> <br> <br><br><br>
+    </form>
+
+      <label for="cin2">Your CIN:</label>
+      <input type="number" name="cin2" [(ngModel)]="cin2">{{cin2}}
+      <!-- Utilisation de l'élément app-affichage avec la propriété cin liée -->
+      <app-affichage *ngIf="cin2 !== null" [cin]="cin2"></app-affichage>
+
+
+
+
+            </div>
+
+          </div>
+
+      </div>
+  </div>
+
+
+</body>
+</html>
+<div>
+  <router-outlet></router-outlet> <!-- Cette balise va afficher le composant chargé par le routeur -->
+
+</div>

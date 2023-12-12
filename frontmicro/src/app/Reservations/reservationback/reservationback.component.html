@@ -1,0 +1,280 @@
+
+
+  <div class="content card-with-border-radius">
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="table-responsive">
+
+
+            <table class="table table-bordered table-striped">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col" class="text-center" style="width: 70px;">#</th>
+                  <th scope="col" class="text-center">Identifiant</th>
+                  <th scope="col" class="text-center">Année Universitaire</th>
+                  <th scope="col" class="text-center">Chambre</th>
+                  <th scope="col" class="text-center">Validité</th>
+                  <th scope="col" class="text-center">Etudiants</th>
+                  <th scope="col" class="text-center">Update</th>
+                  <th scope="col" class="text-center">Delete</th>
+                  <th scope="col" class="text-center">All ETudiants</th>
+
+
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr *ngFor="let res of reserv; let i = index">
+                  <td class="text-center">{{ i + 1 }}</td>
+                  <td class="text-center">{{ res.idReservation }}</td>
+                  <td class="text-center">{{ res.annerUniversitaire }}</td>
+                  <td>
+                    {{chambres[i]}}
+                   </td>
+                  <td class="text-center">{{ res.estValide }}
+                </td>
+
+
+
+                  <td>
+                    <button type="button"  (click)="open2(mymodal2, res.idReservation)">
+                      <img src="assets/imgs/student.png" alt="Delete" style="width: 30px; height: 30px;">
+                    </button>
+                  </td>
+
+
+                 <!-- Template HTML -->
+                 <td>
+                  <a [routerLink]="['update', res.idReservation]" >
+                    <img src="assets/imgs/edit.png" alt="Update" style="width: 30px; height: 30px;">
+                  </a>
+                </td>
+
+
+                  <td>
+              <!-- <button type="button" class="btn btn-lg btn-outline-primary btn-primary text-white" (click)="deleteRes2(chambres[i], res.idReservation) ; delete(i)">Delete</button> -->
+              <button appAlertDirective class="delete-button" [alert]="'You want to delete a reservation ?'" [go]="deleteResAndDelete.bind(this, i, chambres[i], res.idReservation)" >
+                <img src="assets/imgs/del.png" alt="Delete" style="width: 30px; height: 30px;">
+              </button>
+
+
+              </td>
+
+
+
+
+
+                <td>
+                <button type="button" class="btn btn-lg btn-outline-primary " (click)="open4(mymodalE, res.idReservation)">
+                  <img src="assets/imgs/many.jpg" alt="Update" style="width: 30px; height: 30px;">
+                </button>
+              </td>
+
+
+
+
+                <ng-template #mymodalE let-modal>
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Les Etudiants Asoociés à cette reservation :</h4>
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Nom</th>
+                          <th scope="col">Prénom</th>
+                          <th scope="col">CIN</th>
+                          <th scope="col">Click</th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let student of etudiant">
+                          <td>{{ student.nomEtudiant }}</td>
+                          <td>{{ student.prenomEtudiant }}</td>
+                          <td>{{ student.cin }}</td>
+                          <td>
+                            <input type="checkbox" id="valid" name="valide" (change)="recupererIdEtudiant(student, $event)">
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" (click)="affecterEtudiantAReservation(res.idReservation); modal.close('Save click')">Ok</button>
+                  </div>
+                </ng-template>
+
+
+
+                  <ng-template #mymodal2 let-modal>
+                    <div class="modal-header">
+                      <h4 class="modal-title" id="modal-basic-title">Les Etudiants Asoociés à cette reservation :</h4>
+                      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Prénom</th>
+                            <th scope="col">CIN</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let student of etudiant">
+                            <td>{{ student.nomEtudiant }}</td>
+                            <td>{{ student.prenomEtudiant }}</td>
+                            <td>{{ student.cin }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+                    </div>
+                  </ng-template>
+
+                  <ng-template #mymodal3 let-modal>
+                    <div class="modal-header">
+                      <h4 class="modal-title" id="modal-basic-title">Les Chambres Associées à cette Réservation :</h4>
+                      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Numéro de la chambre</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <!-- Utilisez chambre au lieu de etudiant, car vous avez stocké la chambre dans this.chambre -->
+                          <tr *ngIf="chambre">
+                            <td>{{ chambre.numeroChambre }}</td>
+                          </tr>
+                          <tr *ngIf="!chambre">
+                            <td>Aucune chambre associée</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+                    </div>
+                  </ng-template>
+
+
+                 <!-- ... Vos autres éléments HTML ... -->
+                 <ng-template #mymodalUpdate let-modal>
+                  <!-- Contenu de votre modal de mise à jour -->
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Mise à jour de la réservation</h4>
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <!-- Contenu de votre formulaire de mise à jour -->
+                    <form (ngSubmit)=" updateForm(res.idReservation)">
+                      <div class="mb-3">
+                    <label for="updateAnnee">Année Universitaire:</label>
+                    <input type="date" id="updateAnnee" name="updateAnnee" [(ngModel)]="newRequest2.annerUniversitaire" />
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="description">Valide :  </label>
+                    <input type="checkbox" id="valid" name="valide" [(ngModel)]="newRequest2.estValide">
+                  </div>
+                </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-dark" (click)="updateForm(res.idReservation)">Mettre à jour</button>
+                </div>
+
+                </ng-template>
+
+               </tr>
+              </tbody>
+            </table>
+
+
+
+            <button type="button" class="close" aria-label="Close" (click)="open(mymodal4)">Add Reservation</button>
+
+<!-- ... Autres parties du modèle ... -->
+
+
+
+
+            <ng-template #mymodal4 let-modal>
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">REQUEST</h4>
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form (ngSubmit)="submitForm2()">
+
+                  <div class="mb-3">
+                    <label for="date">Date of the reservation:</label>
+                    <input (keyup)="test(firstname.errors)" type="date" id="date" name="date" [(ngModel)]="newRequest.annerUniversitaire" #firstname="ngModel" required > <br>
+                      <div *ngIf ="firstname.invalid" >
+                      <div *ngIf ="firstname.errors"   >
+                        <div [style.color]="'red'">Champ obligatoire</div>
+                      </div>
+                  </div>
+                </div>
+
+                  <div class="mb-3">
+                    <label for="description">Valide :  </label>
+                    <input type="checkbox" id="valid" name="valide" [(ngModel)]="newRequest.estValide">
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="numeroChambre">Choose a chambre:</label>
+                    <select id="numeroChambre" name="numeroChambre" [(ngModel)]="selectedNumeroChambre">
+                      <option *ngFor="let chambress of Allchambres" [value]="chambress.numeroChambre">{{ chambress.numeroChambre }}</option>
+                    </select>
+                  </div>
+                  <button [disabled]="firstname.invalid" type="submit" class="btn btn-primary" (click)="modal.close('Save click')">SEND</button>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button [disabled]="firstname.invalid"  class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+              </div>
+            </ng-template>
+
+
+            <div class="content card-with-border-radius">
+              <router-outlet></router-outlet>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+

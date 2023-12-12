@@ -2,12 +2,12 @@
 
 
 .university-title {
-    margin-bottom: 40px; 
+    margin-bottom: 40px;
   }
   .shining-title {
     position: relative;
   }
-  
+
   .shining-title:before {
     content: "";
     position: absolute;
@@ -19,7 +19,7 @@
     opacity: 0;
     animation: shining 2s infinite;
   }
-  
+
   @keyframes shining {
     0%, 100% {
       opacity: 0;
@@ -40,7 +40,4 @@
 
   .foyer-button.custom-margin-top {
   margin-top: 11px; /* Adjust the value as needed */
-}
-.modal-backdrop {
-  z-index: 1050 !important; /* Use a higher value than the default */
 }

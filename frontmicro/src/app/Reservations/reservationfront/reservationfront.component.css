@@ -1,0 +1,27 @@
+.register-form h1 {
+    font-size: 42px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 250px 0px;
+    line-height: 60px;
+}
+.register-form .form-control {
+    border: none;
+    background: none;
+    border-bottom: 4px solid #ffde07;
+    border-radius: 20px !important;
+    color: #d45f5f;
+}
+.register-form .form-control:focus,
+.register-form .form-control:hover{
+  border:none;
+  margin: 0 auto;
+  background: none;
+  box-shadow: none;
+  border-bottom: 1px solid #db3636;
+  color: #fff;
+}
+.custom-modal-size {
+  max-width: 90%;  /* Ajustez cette valeur en fonction de vos besoins */
+  width: auto;
+}

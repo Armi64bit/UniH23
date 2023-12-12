@@ -1,0 +1,20 @@
+
+  <div class="modal-body">
+    <!-- Contenu de votre formulaire de mise à jour -->
+    <form (ngSubmit)=" updateForm(id)">
+      <div class="mb-3">
+    <label for="updateAnnee">Année Universitaire:</label>
+    <input type="date" id="updateAnnee" name="updateAnnee" [(ngModel)]="newRequest2.annerUniversitaire" />
+  </div>
+
+  <div class="mb-3">
+    <label for="description">Valide :  </label>
+    <input type="checkbox" id="valid" name="valide" [(ngModel)]="newRequest2.estValide">
+  </div>
+</form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="updateForm(id)" [routerLink]="['/back']">Mettre à jour</button>
+  </div>
+
+

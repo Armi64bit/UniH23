@@ -20,6 +20,7 @@ import { UniversityModule } from './University/university.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UniversityStatisticsComponent } from './University/university-statistics/university-statistics.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ReservationModule } from './Reservations/reservation.module';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     UniversityModule,
     NgbModule,
     NgxPaginationModule,
+    ReservationModule,
+
 
 
 
