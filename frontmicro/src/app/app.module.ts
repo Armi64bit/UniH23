@@ -20,7 +20,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UniversityStatisticsComponent } from './University/university-statistics/university-statistics.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ReservationModule } from './Reservations/reservation.module';
-import { FoyerModule } from './foyer/foyer.module';
+import { FoyerModule } from './foyer/components/foyer.module';
 
 @NgModule({
   declarations: [

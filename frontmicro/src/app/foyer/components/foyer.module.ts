@@ -4,13 +4,14 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
-import { AddFoyerComponent } from './components/add-foyer/add-foyer.component';
-import { AllFoyerComponent } from './components/all-foyer/all-foyer.component';
-import { DeleteFoyerComponent } from './components/delete-foyer/delete-foyer.component';
-import { DetailsFoyerComponent } from './components/details-foyer/details-foyer.component';
-import { UpdateFoyerComponent } from './components/update-foyer/update-foyer.component';
-import { FoyerListComponent } from './components/foyer-list/foyer-list.component';
+import { AddFoyerComponent } from './add-foyer/add-foyer.component';
+import { AllFoyerComponent } from './all-foyer/all-foyer.component';
+import { DeleteFoyerComponent } from './delete-foyer/delete-foyer.component';
+import { DetailsFoyerComponent } from './details-foyer/details-foyer.component';
+import { UpdateFoyerComponent } from './update-foyer/update-foyer.component';
+import { FoyerListComponent } from './foyer-list/foyer-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FoyerChangeDirective } from './foyer-change.directive';
 
 
 
@@ -22,17 +23,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DetailsFoyerComponent,
     UpdateFoyerComponent,
     FoyerListComponent,
+    FoyerChangeDirective
 
 
   ],
   imports: [
     CommonModule,
     RouterModule.forChild([
-       { path: 'add', component: AddFoyerComponent },
-       { path: 'all', component: AllFoyerComponent },
-       { path: 'delete', component: DeleteFoyerComponent },
-       { path: 'details', component: DetailsFoyerComponent },
-       { path: 'update', component: UpdateFoyerComponent },
+       //{ path: 'add', component: AddFoyerComponent },
+       { path: 'foyer-gestion', component: AllFoyerComponent },
+       //{ path: 'delete', component: DeleteFoyerComponent },
+       //{ path: 'details', component: DetailsFoyerComponent },
+       //{ path: 'update', component: UpdateFoyerComponent },
       { path: 'foyer-list', component: FoyerListComponent },
         ]),
     FormsModule,
