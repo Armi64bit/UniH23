@@ -7,6 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Unihaven';
+  showNavBar = true; // Set it to false when you want to hide the navigation bar
+
+
   showEtudiantsOptions = false;
   showchOptions: boolean = false;
   showblOptions: boolean = false;

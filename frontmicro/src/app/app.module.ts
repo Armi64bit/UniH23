@@ -21,6 +21,7 @@ import { UniversityStatisticsComponent } from './University/university-statistic
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ReservationModule } from './Reservations/reservation.module';
 import { FoyerModule } from './foyer/components/foyer.module';
+import { FrontComponent } from './front/front.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { FoyerModule } from './foyer/components/foyer.module';
     StatisticetudiantComponent,
     UniversityStatisticsComponent,
     HighlightDirective,
+    FrontComponent,
 
 
 

@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms'; // Ensure this is imported
 import { UniversityStatisticsComponent } from './University/university-statistics/university-statistics.component';
+import { FrontComponent } from './front/front.component';
 
 const routes: Routes = [
+  { path: 'f', component: FrontComponent },
 
   { path: 'chambre', loadChildren: () => import('./Chambre/chambre.module').then(m => m.ChambreModule) },
   { path: 'bloc', loadChildren: () => import('./Bloc/components/Bloc.module').then(m => m.ComponentsModule) },
